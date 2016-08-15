@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DSS</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_username">Username</string>
+    <string name="welcome">Welcome to Second Screen</string>
+    <string name="logout">logout</string>
+    <string name="neg">Neg Involved</string>
+    <string name="sign_in">Sign In</string>
+    <string name="like">Like</string>
+    <string name="host">209.114.126.45</string>
+    <string name="optionsURL">209.114.126.45/decisions/api/negotiations/:negotiation_id/users/:user_id/settings</string>
+    <string name="Dislike">Dislike</string>
+</resources>

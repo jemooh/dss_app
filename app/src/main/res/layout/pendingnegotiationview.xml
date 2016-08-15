@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="title"
+        android:id="@+id/txtTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txtusers"
+        android:padding="1dp"
+        android:textColor="#373333"
+        android:layout_below="@+id/txtTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txtbalance"
+        android:padding="1dp"
+        android:layout_below="@+id/txtusers"
+        android:layout_marginTop="35dp"
+        android:layout_alignRight="@+id/txtusers"
+        android:layout_alignEnd="@+id/txtusers"
+        android:layout_alignLeft="@+id/txtusers"
+        android:layout_alignStart="@+id/txtusers" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/txtagreement"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/txtbalance"
+        android:layout_centerHorizontal="true" />
+
+    <com.example.leticia.dss.widget.SeekBarListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekbarlistview"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="#f8f7f7"
+        android:layout_below="@+id/txtagreement">
+    </com.example.leticia.dss.widget.SeekBarListView>
+
+    <ProgressBar
+        android:id="@+id/pbppl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress" />
+    <TextView
+        android:id="@+id/progressMsg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pbppl"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Loading... "
+        android:textSize="10sp"
+        android:textColor="@color/less_grey" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/btnsubmit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/grey_buttom_round_bg" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Dislike"
+        android:id="@+id/textViewdis"
+        android:textColor="#1c1c1c"
+        android:layout_alignTop="@+id/txtagreement"
+        android:layout_alignLeft="@+id/seekbarlistview"
+        android:layout_alignStart="@+id/seekbarlistview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Like"
+        android:id="@+id/textViewlike"
+        android:textColor="#201f1f"
+        android:layout_above="@+id/seekbarlistview"
+        android:layout_alignRight="@+id/seekbarlistview"
+        android:layout_alignEnd="@+id/seekbarlistview" />
+
+    <com.example.leticia.dss.widget.OptionsListView
+        android:id="@+id/optionListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textViewlike"
+        android:cacheColorHint="@android:color/transparent"
+        android:listSelector="@drawable/list_selector"
+        android:layout_alignEnd="@+id/textViewlike"
+        android:layout_below="@+id/txtagreement">
+
+    </com.example.leticia.dss.widget.OptionsListView>
+
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/txtTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txtusers"
+        android:layout_below="@+id/txtTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txtbalance"
+        android:layout_below="@+id/txtusers"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/txtagreement"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/txtbalance"
+        android:layout_centerHorizontal="true" />
+
+    <com.example.leticia.dss.widget.OptionsListView
+        android:id="@+id/optionListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:cacheColorHint="@android:color/transparent"
+        android:fadingEdge="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/txtagreement"
+        android:background="#e8e6e6">
+
+    </com.example.leticia.dss.widget.OptionsListView>
+
+    <ProgressBar
+        android:id="@+id/pbppl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress" />
+    <TextView
+        android:id="@+id/progressMsg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pbppl"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Loading... "
+        android:textSize="10sp"
+        android:textColor="@color/less_grey" />
+
+</RelativeLayout>
