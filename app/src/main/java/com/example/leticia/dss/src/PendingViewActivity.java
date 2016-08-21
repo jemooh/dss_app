@@ -48,126 +48,131 @@ import java.util.TimeZone;
 
 
     public class PendingViewActivity extends AppCompatActivity implements OptionsClickListener {
-              private  String title ,settingsURL,optionsURL,pointsURL,myratingURL;
-              private String name,balance,test;
-              public TextView txtTitle,txtUsers,txtBalance,txtAgreement,txtlike,txtdislike,txtMsg;
-              public Button btn;
-              private SeekBarListView listViewseekbar;
-              private OptionsListView lstView;
-              public StringRequest request;
-              public RequestQueue requestQueue;
-              ArrayList<HashMap<String, String>> optionsList;
-              ArrayList<HashMap<String, String>> pointsList;
-              HashMap<String, String> map1;
-              List<Options> options;
-              List<SeekBars> seekBarsList;
-              List<Myrating> mypoints;
-              ArrayList<HashMap<String, String>>   myratings;
-              JSONArray rating;
-              private AlertDialog resultDialog;
-              private ProgressBar pbpp;
+        private String title, settingsURL, optionsURL, pointsURL, myratingURL,offerURL,opponentofferURL;
+        private String name, balance, test;
+        public TextView txtTitle, txtUsers, txtBalance, txtAgreement, txtlike, txtdislike, txtMsg;
+        public Button btn;
+        private SeekBarListView listViewseekbar;
+        private OptionsListView lstView;
+        public StringRequest request;
+        public RequestQueue requestQueue;
+        ArrayList<HashMap<String, String>> optionsList;
+        ArrayList<HashMap<String, String>> pointsList;
+        HashMap<String, String> map1;
+        List<Options> options;
+        List<SeekBars> seekBarsList;
+        List<Myrating> mypoints;
+        ArrayList<HashMap<String, String>> myratings;
+        JSONArray rating;
+        private AlertDialog resultDialog;
+        private ProgressBar pbpp;
+        public static final String HOST = "http://f0e9ec55.ngrok.io";
 
-              Context c;
-              private String point,pointArray;
-              public   OptionsAdapter customAdapter;
+        Context c;
+        private String point, pointArray;
+        public OptionsAdapter customAdapter;
             /*
                 public SingleLessonActivity1() {
                     super(R.string.Details_name);
                 }*/
 
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.pendingnegotiationview);
+
+            // submitpoints = new ArrayList<SubmitPoints>();
+
+            optionsList = new ArrayList<HashMap<String, String>>();
+            pointsList = new ArrayList<HashMap<String, String>>();
+
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            //actionBar.setIcon(R.mipmap.ic_launcher);
+            //actionBar.setIcon();
+            //databaseHelper = new PersonalDatabaseHelper(this);
+            Intent in = getIntent();
+            Bundle b = in.getExtras();
+
+            this.title = b.getString("title");
+            this.settingsURL = b.getString("settingsURL");
+            this.optionsURL = b.getString("optionsURL");
+            this.pointsURL = b.getString("pointsURL");
+            this.myratingURL = b.getString("myratingURL");
+            this.offerURL = b.getString("offerURL");
+            this.opponentofferURL = b.getString("opponentofferURL");
+
+            Log.d("Settings URL", "  " + settingsURL);
+            Log.d("Options URL", "  " + optionsURL);
+            Log.d("Points URL", "  " + pointsURL);
+            Log.d("Myrating URL", "  " + myratingURL);
+            Log.d("Offer URL", "  " + offerURL);
+            Log.d("opponentOffer URL", "  " + opponentofferURL);
+
+            listViewseekbar = (SeekBarListView) findViewById(R.id.seekbarlistview);
+            lstView = (OptionsListView) findViewById(R.id.optionListView);
+            txtTitle = (TextView) findViewById(R.id.txtTitle);
+            txtUsers = (TextView) findViewById(R.id.txtusers);
+            txtBalance = (TextView) findViewById(R.id.txtbalance);
+            txtlike = (TextView) findViewById(R.id.textViewlike);
+            txtAgreement = (TextView) findViewById(R.id.txtagreement);
+            txtdislike = (TextView) findViewById(R.id.textViewdis);
+            pbpp = (ProgressBar) findViewById(R.id.pbppl);
+            txtMsg = (TextView) findViewById(R.id.progressMsg2);
+
+
+            lstView.setOnItemClickListener(this);
+            listViewseekbar.setVisibility(View.GONE);
+            lstView.setVisibility(View.GONE);
+            txtlike.setVisibility(View.GONE);
+            txtdislike.setVisibility(View.GONE);
+
+
+            // we will using AsyncTask during parsing
+            new AsyncTaskParseSettingsJson().execute();
+            new AsyncTaskParseOptionsJson().execute();
+            //new AsyncTaskParsePointsJson().execute();
+
+
+            txtTitle.setText(title);
+            pbpp.setVisibility(View.VISIBLE);
+            txtMsg.setVisibility(View.VISIBLE);
+
+            btn = (Button) findViewById(R.id.btnsubmit);
+            btn.setVisibility(View.GONE);
+
+            btn.setOnClickListener(new View.OnClickListener() {
+
                 @Override
-                public void onCreate(Bundle savedInstanceState) {
-                    super.onCreate(savedInstanceState);
-                    setContentView(R.layout.pendingnegotiationview);
+                public void onClick(View v) {
 
-                   // submitpoints = new ArrayList<SubmitPoints>();
+                    DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
-                    optionsList = new ArrayList<HashMap<String, String>>();
-                    pointsList = new ArrayList<HashMap<String, String>>();
+                    try {
+                        rating = db.getJsonmyratings();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                    ActionBar actionBar = getSupportActionBar();
-                    actionBar.setDisplayHomeAsUpEnabled(true);
-                    actionBar.setDisplayShowHomeEnabled(true);
-                    //actionBar.setIcon(R.mipmap.ic_launcher);
-                    //actionBar.setIcon();
-                    //databaseHelper = new PersonalDatabaseHelper(this);
-                    Intent in = getIntent();
-                    Bundle b = in.getExtras();
-
-                    this.title = b.getString("title");
-                    this.settingsURL = b.getString("settingsURL");
-                    this.optionsURL = b.getString("optionsURL");
-                    this.pointsURL = b.getString("pointsURL");
-                    this.myratingURL = b.getString("myratingURL");
-
-                    Log.d("Settings URL","  "+settingsURL);
-                    Log.d("Options URL","  "+optionsURL);
-                    Log.d("Settings URL","  "+pointsURL);
-                    Log.d("Settings URL","  "+myratingURL);
-
-                     listViewseekbar = (SeekBarListView) findViewById(R.id.seekbarlistview);
-                     lstView = (OptionsListView) findViewById(R.id.optionListView);
-                     txtTitle = (TextView) findViewById(R.id.txtTitle);
-                     txtUsers = (TextView) findViewById(R.id.txtusers);
-                     txtBalance = (TextView) findViewById(R.id.txtbalance);
-                     txtlike = (TextView) findViewById(R.id.textViewlike);
-                     txtAgreement = (TextView) findViewById(R.id.txtagreement);
-                     txtdislike = (TextView) findViewById(R.id.textViewdis);
-                     pbpp = (ProgressBar) findViewById(R.id.pbppl);
-                     txtMsg = (TextView) findViewById(R.id.progressMsg2);
-
-
-
-                    lstView.setOnItemClickListener(this);
-                    listViewseekbar.setVisibility(View.GONE);
-                    lstView.setVisibility(View.GONE);
-                    txtlike.setVisibility(View.GONE);
-                    txtdislike.setVisibility(View.GONE);
-
-
-                    // we will using AsyncTask during parsing
-                    new AsyncTaskParseSettingsJson().execute();
-                    new AsyncTaskParseOptionsJson().execute();
-                    //new AsyncTaskParsePointsJson().execute();
-
-
-
-                    txtTitle.setText(title);
-                    pbpp.setVisibility(View.VISIBLE);
-                    txtMsg.setVisibility(View.VISIBLE);
-
-                    btn = (Button) findViewById(R.id.btnsubmit);
-                    btn.setVisibility(View.GONE);
-
-                    btn.setOnClickListener( new View.OnClickListener() {
-
-                        @Override
-                        public void onClick(View v) {
-
-                            DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-
-                            try {
-                                rating= db.getJsonmyratings();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                            //String r = rating.toString();
-                            new SendMyratingTask().execute(rating);
-
-                        }
-                    });
+                    //String r = rating.toString();
+                    new SendMyratingTask().execute(rating);
 
                 }
+            });
+
+        }
 
         @Override
         public void onItemClicked(Options Item, int position) {
 
             String option_id = Item.getOption_id();
-            String title = Item.getTitle();
+            String opponentcolor = Item.getOpponent_color_id();
 
-
-            Log.d("title..",":"+title);
+            if (opponentcolor.equals(option_id)){
+             new  AsyncTaskParseresolvedOfferJson().execute(option_id);
+            }else
+             new  AsyncTaskParseOfferJson().execute(option_id);
 
 
         }
@@ -185,7 +190,7 @@ import java.util.TimeZone;
                 dialogTitle = "Added to queue";
                 statusMessage = "The Your points is scheduled to be sent";
                 resultDialog = new AlertDialog.Builder(PendingViewActivity.this)
-                          .create();
+                        .create();
                 resultDialog.setTitle(dialogTitle);
                 resultDialog.setMessage(statusMessage);
                 resultDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
@@ -201,31 +206,31 @@ import java.util.TimeZone;
             @Override
             protected Boolean doInBackground(final JSONArray... r) {
                 JSONArray rating = r[0];
-                Log.d("JSONArray_rating:",""+rating);
+                Log.d("JSONArray_rating:", "" + rating);
                 JSONArray points;
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                        // loop through all users
-                   try {
+                // loop through all users
+                try {
 
-                       for (int i = 0; i < rating.length(); i++) {
+                    for (int i = 0; i < rating.length(); i++) {
 
-                           JSONObject c = rating.getJSONObject(i);
-
-
-                           params.add(new BasicNameValuePair( c.getString("preference"), c.getString("myrating")));
+                        JSONObject c = rating.getJSONObject(i);
 
 
-                       }
-                   }catch (Exception e) {
-                       e.printStackTrace();
+                        params.add(new BasicNameValuePair(c.getString("preference"), c.getString("myrating")));
 
-                   }
 
-                    Log.d("params:",""+params);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+                Log.d("params:", "" + params);
 
 
                 try {
-                     JsonParser2 jsonParser2 = new JsonParser2();
+                    JsonParser2 jsonParser2 = new JsonParser2();
 
                     JSONObject json = jsonParser2.getJSONFromUrl(myratingURL, params);
                     status = json.get("status").toString();
@@ -251,7 +256,8 @@ import java.util.TimeZone;
                 try {
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
-                    }if (resultDialog.isShowing()) {
+                    }
+                    if (resultDialog.isShowing()) {
                         resultDialog.dismiss();
                     }
                     if (status.equals("ok")) {
@@ -286,164 +292,173 @@ import java.util.TimeZone;
                     e.printStackTrace();
                 }
             }
-         }
+        }
 
 
         public class AsyncTaskParseSettingsJson extends AsyncTask<JSONArray, JSONArray, JSONArray> {
 
-                        final String TAG = "AsyncTaskParseJson.java";
-                       @Override
-                        protected void onPreExecute() {}
+            final String TAG = "AsyncTaskParseJson.java";
 
-                        @Override
-                        protected JSONArray doInBackground(JSONArray... arg0) {
+            @Override
+            protected void onPreExecute() {
+            }
 
-                            // instantiate our json parser
-                            JsonParser jParser = new JsonParser();
+            @Override
+            protected JSONArray doInBackground(JSONArray... arg0) {
 
-                            // get json string from url
-                            JSONArray json = jParser.getJSONFromUrl(settingsURL);
-                            Log.d("settings ",""+json);
-                            return json;
-                        }
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
 
-                        @Override
-                        protected void onPostExecute(JSONArray json) {
-                            try {
+                // get json string from url
+                JSONArray json = jParser.getJSONFromUrl(settingsURL);
+                Log.d("settings ", "" + json);
+                return json;
+            }
 
-                                // loop through all users
-                                for (int i = 0; i < json.length(); i++) {
+            @Override
+            protected void onPostExecute(JSONArray json) {
+                try {
 
-                                    JSONObject c = json.getJSONObject(i);
+                    // loop through all users
+                    for (int i = 0; i < json.length(); i++) {
 
-                                    // Storing each json item in variable
-                                    if (c.getString("balance") != "null") {
-                                        balance = c.getString("balance");
-                                    }else
-                                    balance = "null";
+                        JSONObject c = json.getJSONObject(i);
 
-                                    name = c.getString("name");
-                                    //this. = balance;
-                                    // show the values in our logcat
-                                    Log.e(TAG, "balance: " + balance
-                                            + ", username: " + name);
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            DecimalFormat dF = new DecimalFormat("0.00");
-                            if (!balance.equals("null")){
-                                double b = Double.parseDouble(balance);
-                                txtBalance.setText("Balance " + " :" + dF.format(b));
-                             }
+                        // Storing each json item in variable
+                        if (c.getString("balance") != "null") {
+                            balance = c.getString("balance");
+                        } else
+                            balance = "null";
 
-                            txtUsers.setText("You " + "vs" + " " + name);
+                        name = c.getString("name");
+                        //this. = balance;
+                        // show the values in our logcat
+                        Log.e(TAG, "balance: " + balance
+                                + ", username: " + name);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                DecimalFormat dF = new DecimalFormat("0.00");
+                if (!balance.equals("null")) {
+                    double b = Double.parseDouble(balance);
+                    txtBalance.setText("Balance " + " :" + dF.format(b));
+                }
 
-                        }
+                txtUsers.setText("You " + "vs" + " " + name);
+
+            }
+        }
+
+
+        public class AsyncTaskParseOptionsJson extends AsyncTask<String, String, String> {
+
+            final String TAG = "AsyncTaskParseJson.java";
+
+            JSONArray dataJsonArr = null;
+
+            @Override
+            protected void onPreExecute() {
+            }
+
+            @Override
+            protected String doInBackground(String... arg0) {
+
+                try {
+
+                    // instantiate our json parser
+                    JsonParser jParser = new JsonParser();
+
+                    // get json string from url
+                    JSONArray json = jParser.getJSONFromUrl(optionsURL);
+                    Log.d("Options ", "" + json);
+                    for (int i = 0; i < json.length(); i++) {
+
+                        JSONObject c = json.getJSONObject(i);
+
+
+                        // Storing each json item in variable
+                        String id = c.getString("id");
+                        String title = c.getString("title");
+                        //String agreement_action = c.getString("agreement_action");
+                        String negotiation_id = c.getString("negotiation_id");
+                        String color = "0";
+                        String mycolor = "#ffffff";
+
+                         //store in db
+                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                        db.addOptions(id, title, null, null,color,mycolor,color, negotiation_id);
+
+
                     }
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-               public class AsyncTaskParseOptionsJson extends AsyncTask<String, String,String> {
+                return null;
+            }
 
-                        final String TAG = "AsyncTaskParseJson.java";
+            @Override
+            protected void onPostExecute(String optionsList) {
+                new AsyncTaskParseLastofferJson().execute();
+                new AsyncTaskParseopponentofferJson().execute();
+                new AsyncTaskParsePointsJson().execute();
 
-                        JSONArray dataJsonArr = null;
+            }
+        }
 
-                        @Override
-                        protected void onPreExecute() {}
+        public class AsyncTaskParsePointsJson extends AsyncTask<Void, Void, String> {
 
-                        @Override
-                        protected String doInBackground(String... arg0) {
-
-                            try {
-
-                                // instantiate our json parser
-                                JsonParser jParser = new JsonParser();
-
-                                // get json string from url
-                                JSONArray json = jParser.getJSONFromUrl(optionsURL);
-                                  Log.d("Options ",""+json);
-                                for (int i = 0; i < json.length(); i++) {
-
-                                    JSONObject c = json.getJSONObject(i);
+            final String TAG = "AsyncTaskParseJson.java";
 
 
-                                        // Storing each json item in variable
-                                        String id = c.getString("id");
-                                        String title = c.getString("title");
-                                        //String agreement_action = c.getString("agreement_action");
-                                        String negotiation_id = c.getString("negotiation_id");
+            // contacts JSONArray
+            JSONArray dataJsonArr = null;
+            String pointsnull;
 
-                                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                                        db.addOptions(id, title, null, null,negotiation_id);
+            @Override
+            protected void onPreExecute() {
+            }
 
+            @Override
+            protected String doInBackground(Void... arg0) {
 
-                                }
+                try {
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                    // instantiate our json parser
+                    JsonParser jParser = new JsonParser();
 
-                            return null;
-                        }
+                    // get json string from url
+                    JSONArray json = jParser.getJSONFromUrl(pointsURL);
 
-                        @Override
-                        protected void onPostExecute(String optionsList) {
+                    if (json.length() == 0) {
 
-                            new AsyncTaskParsePointsJson().execute();
-
-                        }
+                        pointsnull = "nullArray";
                     }
 
-                    public class AsyncTaskParsePointsJson extends AsyncTask<Void, Void, String> {
+                    // get the array of users
+                    //dataJsonArr = json.getJSONArray("Users");
 
-                        final String TAG = "AsyncTaskParseJson.java";
+                    // loop through all users
+                    for (int i = 0; i < json.length(); i++) {
 
+                        JSONObject c = json.getJSONObject(i);
 
-                        // contacts JSONArray
-                        JSONArray dataJsonArr = null;
-                        String pointsnull;
+                        // Log.d("String Points:_", "" + c.getString("points"));
+                        if (c.getString("points") == "null") {
+                            pointsnull = "null_points";
+                        }
 
-                        @Override
-                        protected void onPreExecute() {}
+                        //Log.d("points_check",""+c.getString("points"));
+                        // Storing each json item in variable
+                        String option_id = c.getString("option_id").toString();
+                        String myrating = c.getString("myrating").toString();
+                        String points = c.getString("points").toString();
+                        //String color = "0";
 
-                        @Override
-                        protected String doInBackground(Void... arg0) {
-
-                            try {
-
-                                // instantiate our json parser
-                                JsonParser jParser = new JsonParser();
-
-                                // get json string from url
-                                JSONArray json = jParser.getJSONFromUrl(pointsURL);
-
-                                if (json.length()==0){
-
-                                    pointsnull = "nullArray";
-                                }
-
-                                // get the array of users
-                                //dataJsonArr = json.getJSONArray("Users");
-
-                                // loop through all users
-                                for (int i = 0; i < json.length(); i++) {
-
-                                    JSONObject c = json.getJSONObject(i);
-
-                                   // Log.d("String Points:_", "" + c.getString("points"));
-                                          if(c.getString("points") == "null") {
-                                              pointsnull = "null_points";
-                                          }
-
-                                        //Log.d("points_check",""+c.getString("points"));
-                                        // Storing each json item in variable
-                                        String option_id = c.getString("option_id").toString();
-                                        String myrating = c.getString("myrating").toString();
-                                        String points = c.getString("points").toString();
-
-                                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                                        db.insertPoints(option_id, myrating, points);
+                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                        db.insertPoints(option_id, myrating, points);
                                     /*}else {
                                         pointsnull = "null_points";
                                         Log.d("pointsnull_check",""+pointsnull);
@@ -451,55 +466,359 @@ import java.util.TimeZone;
 
 
                                     */
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                            return pointsnull;
-                        }
-                        @Override
-                        protected void onPostExecute(String strFromDoInBg) {
-
-                            if(strFromDoInBg == null){
-                                lstView.setVisibility(View.VISIBLE);
-                                //lstView.setSelector( R.drawable.listview_bg);
-                                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                                options = db.getAllOptions();
-                                Log.d("database List", "" + options);
-                                lstView.setItems(options);
-                                pbpp.setVisibility(View.GONE);
-                                txtMsg.setVisibility(View.GONE);
-
-                            }else if (strFromDoInBg.equals("null_points") ){
-                                pbpp.setVisibility(View.GONE);
-                                txtMsg.setVisibility(View.GONE);
-                                txtAgreement.setText("Waiting for opponent's input");
-
-                            }else if (strFromDoInBg.equals("nullArray")) {
-
-                                btn.setVisibility(View.VISIBLE);
-                                listViewseekbar.setVisibility(View.VISIBLE);
-                                txtlike.setVisibility(View.VISIBLE);
-                                txtdislike.setVisibility(View.VISIBLE);
-                                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                                seekBarsList = db.getAllSeekBarList();
-                                Log.d("database SeekBarTitles", "" + seekBarsList);
-                                listViewseekbar.setItems(seekBarsList);
-                                pbpp.setVisibility(View.GONE);
-                                txtMsg.setVisibility(View.GONE);
-
-                            }
-
-                        }
-
-
-
-
                     }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return pointsnull;
+            }
+
+            @Override
+            protected void onPostExecute(String strFromDoInBg) {
+
+                if (strFromDoInBg == null) {
+
+                    lstView.setVisibility(View.VISIBLE);
+                    //lstView.setSelector( R.drawable.listview_bg);
+                    DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                    options = db.getAllOptions();
+                    Log.d("database List", "" + options);
+                    lstView.setItems(options);
+                    pbpp.setVisibility(View.GONE);
+                    txtMsg.setVisibility(View.GONE);
+
+
+                } else if (strFromDoInBg.equals("null_points")) {
+                    pbpp.setVisibility(View.GONE);
+                    txtMsg.setVisibility(View.GONE);
+                    txtAgreement.setText("Waiting for opponent's input");
+
+                } else if (strFromDoInBg.equals("nullArray")) {
+
+                    btn.setVisibility(View.VISIBLE);
+                    listViewseekbar.setVisibility(View.VISIBLE);
+                    txtlike.setVisibility(View.VISIBLE);
+                    txtdislike.setVisibility(View.VISIBLE);
+                    DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                    seekBarsList = db.getAllSeekBarList();
+                    Log.d("database SeekBarTitles", "" + seekBarsList);
+                    listViewseekbar.setItems(seekBarsList);
+                    pbpp.setVisibility(View.GONE);
+                    txtMsg.setVisibility(View.GONE);
+
+                }
 
             }
 
+
+        }
+
+
+        public class AsyncTaskParseLastofferJson extends AsyncTask<Void, Void, String> {
+
+            final String TAG = "AsyncofferJson.java";
+
+            @Override
+            protected void onPreExecute() {
+            }
+
+            @Override
+            protected String doInBackground(Void... arg0) {
+
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
+                 String lastoffer = offerURL +"/last";
+                // get json string from url
+                JSONArray json = jParser.getJSONFromUrl(lastoffer);
+                Log.d("lastoffer ", "" + json);
+                try {
+
+                    // loop through all users
+                    for (int i = 0; i < json.length(); i++) {
+
+                        JSONObject c = json.getJSONObject(i);
+                        String option_id = c.getString("option_id");
+                        Log.e(TAG, "OPTION_ID: " + option_id);
+                        String mycolor = "#5BB75B";
+
+                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                        db.insertColor(option_id,option_id,mycolor);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String json) {
+
+
+
+            }
+        }
+
+
+        public class AsyncTaskParseopponentofferJson extends AsyncTask<Void, Void, String> {
+
+            final String TAG = "AsyncofferJson.java";
+
+            @Override
+            protected void onPreExecute() {
+            }
+
+            @Override
+            protected String doInBackground(Void... arg0) {
+
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
+                //String lastoffer = offerURL +"/last";
+                // get json string from url
+                JSONArray json = jParser.getJSONFromUrl(opponentofferURL);
+                Log.d("opponentofferURL ", "" + json);
+                try {
+
+                    // loop through all users
+                    for (int i = 0; i < json.length(); i++) {
+
+                        JSONObject c = json.getJSONObject(i);
+                        String option_id = c.getString("option_id");
+                        Log.e(TAG, "OPTION_ID: " + option_id);
+                        String oppcolor = "#f0ad4e";
+                        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                        db.insertOpColor(option_id,option_id,oppcolor);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String json) {
+
+
+            }
+        }
+
+
+
+            public class AsyncTaskParseOfferJson extends AsyncTask<String, Void, Boolean> {
+                    private String status;
+                    private String dialogTitle = "Success", statusMessage = "";
+
+                    private ProgressDialog progressDialog = new ProgressDialog(
+                            PendingViewActivity.this);
+
+                    protected void onPreExecute() {
+
+
+                        dialogTitle = "Added to queue";
+                        statusMessage = "The Your choice is scheduled to be sent";
+                        resultDialog = new AlertDialog.Builder(PendingViewActivity.this)
+                                .create();
+                        resultDialog.setTitle(dialogTitle);
+                        resultDialog.setMessage(statusMessage);
+                        resultDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        resultDialog.dismiss();
+                                        finish();
+                                    }
+                                });
+                        resultDialog.show();
+                    }
+
+                    @Override
+                    protected Boolean doInBackground(final String... r) {
+                        String offer = r[0];
+                        Log.d("JSONArray_rating:", "" + rating);
+                        JSONArray points;
+                        List<NameValuePair> params = new ArrayList<NameValuePair>();
+                        params.add(new BasicNameValuePair("option_id",offer));
+                        Log.d("params:", "" + params);
+                        try {
+                            JsonParser2 jsonParser2 = new JsonParser2();
+
+                            JSONObject json = jsonParser2.getJSONFromUrl(offerURL, params);
+                            status = json.get("status").toString();
+                            if (status.equals("ok")) {
+                                dialogTitle = "Success";
+                                statusMessage = "Successfully added option_id";
+                            } else {
+                                dialogTitle = "Failure";
+                                statusMessage = "An error occurred!";
+
+                            }
+                            Log.e("SUCCESS>>>", "Successfully send option_id");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(final Boolean success) {
+                        try {
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                            if (status.equals("ok")) {
+                                resultDialog = new AlertDialog.Builder(
+                                        PendingViewActivity.this).create();
+                                resultDialog.setTitle(dialogTitle);
+                                resultDialog.setMessage(statusMessage);
+                                resultDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                                        "OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog,
+                                                                int which) {
+                                                finish();
+                                            }
+                                        });
+                                resultDialog.show();
+                            } else {
+                                resultDialog = new AlertDialog.Builder(
+                                        PendingViewActivity.this).create();
+                                resultDialog.setTitle(dialogTitle);
+                                resultDialog.setMessage(statusMessage);
+                                resultDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                                        "OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog,
+                                                                int which) {
+                                                resultDialog.dismiss();
+                                                finish();
+
+
+                                            }
+                                        });
+                                resultDialog.show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+
+        public class AsyncTaskParseresolvedOfferJson extends AsyncTask<String, Void, Boolean> {
+            private String status;
+            private String dialogTitle = "Success", statusMessage = "";
+
+            private ProgressDialog progressDialog = new ProgressDialog(
+                    PendingViewActivity.this);
+
+            protected void onPreExecute() {
+
+
+                dialogTitle = "Added to queue";
+                statusMessage = "The Your agreed choice is scheduled to be sent";
+                resultDialog = new AlertDialog.Builder(PendingViewActivity.this)
+                        .create();
+                resultDialog.setTitle(dialogTitle);
+                resultDialog.setMessage(statusMessage);
+                resultDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                                startActivity(intent);
+                                resultDialog.dismiss();
+                                finish();
+                            }
+                        });
+                resultDialog.show();
+            }
+
+            @Override
+            protected Boolean doInBackground(final String... r) {
+                String offer = r[0];
+                Log.d("JSONArray_rating:", "" + rating);
+                JSONArray points;
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("option_id",offer));
+                Log.d("params:", "" + params);
+                try {
+                    JsonParser2 jsonParser2 = new JsonParser2();
+
+                    JSONObject json = jsonParser2.getJSONFromUrl(offerURL, params);
+                    status = json.get("status").toString();
+                    if (status.equals("ok")) {
+                        dialogTitle = "Success";
+                        statusMessage = "Successfully added option_id";
+                    } else {
+                        dialogTitle = "Failure";
+                        statusMessage = "An error occurred!";
+
+                    }
+                    Log.e("SUCCESS>>>", "Successfully send option_id");
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(final Boolean success) {
+
+                try {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                    if (status.equals("ok")) {
+                        resultDialog = new AlertDialog.Builder(
+                                PendingViewActivity.this).create();
+                        resultDialog.setTitle(dialogTitle);
+                        resultDialog.setMessage(statusMessage);
+                        resultDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                                "OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                                        startActivity(intent);
+                                        //finish();
+                                        resultDialog.dismiss();
+                                        finish();
+                                    }
+                                });
+                        resultDialog.show();
+                    } else {
+                        resultDialog = new AlertDialog.Builder(
+                                PendingViewActivity.this).create();
+                        resultDialog.setTitle(dialogTitle);
+                        resultDialog.setMessage(statusMessage);
+                        resultDialog.setButton(DialogInterface.BUTTON_POSITIVE,
+                                "OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        resultDialog.dismiss();
+                                        finish();
+
+                                    }
+                                });
+                        resultDialog.show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
+
+
+    }
 
 

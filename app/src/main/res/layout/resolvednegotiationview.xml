@@ -50,8 +50,8 @@
         android:cacheColorHint="@android:color/transparent"
         android:fadingEdge="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/txtagreement"
-        android:background="#e8e6e6">
+        android:layout_below="@+id/txtagreement">
+        <!--android:background="#e8e6e6"-->
 
     </com.example.leticia.dss.widget.OptionsListView>
 

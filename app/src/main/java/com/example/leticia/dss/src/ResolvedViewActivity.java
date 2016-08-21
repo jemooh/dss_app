@@ -31,7 +31,7 @@ import java.util.List;
 
 
 public class ResolvedViewActivity extends AppCompatActivity {
-          private  String title ,settingsURL,optionsURL,pointsURL;
+          private  String title ,settingsURL,optionsURL,pointsURL,offerURL;
           private String name,balance,test;
           public TextView txtTitle,txtUsers,txtBalance,txtAgreement,txtMsg;
           private OptionsListView lstView;
@@ -67,10 +67,12 @@ public class ResolvedViewActivity extends AppCompatActivity {
                 this.settingsURL = b.getString("settingsURL");
                 this.optionsURL = b.getString("optionsURL");
                 this.pointsURL = b.getString("pointsURL");
+                this.offerURL = b.getString("offerURL");
 
                 Log.d("Settings URL","  "+settingsURL);
                 Log.d("Options URL","  "+optionsURL);
                 Log.d("Settings URL","  "+pointsURL);
+                Log.d("offerURL URL","  "+offerURL);
                  lstView = (OptionsListView) findViewById(R.id.optionListView);
                  txtTitle = (TextView) findViewById(R.id.txtTitle);
                  txtUsers = (TextView) findViewById(R.id.txtusers);
@@ -85,15 +87,11 @@ public class ResolvedViewActivity extends AppCompatActivity {
 
                 // we will using AsyncTask during parsing
                 new AsyncTaskParseSettingsJson().execute();
+                //new AsyncTaskParseLastofferJson().execute();
                 new AsyncTaskParseOptionsJson().execute();
-                new AsyncTaskParsePointsJson().execute();
                 txtTitle.setText(title);
 
-
-
-
             }
-
 
                 public class AsyncTaskParseSettingsJson extends AsyncTask<JSONArray, JSONArray, JSONArray> {
 
@@ -101,7 +99,9 @@ public class ResolvedViewActivity extends AppCompatActivity {
 
 
                     @Override
-                    protected void onPreExecute() {}
+                    protected void onPreExecute() {
+
+                    }
 
                     @Override
                     protected JSONArray doInBackground(JSONArray... arg0) {
@@ -179,10 +179,12 @@ public class ResolvedViewActivity extends AppCompatActivity {
                                 String title = c.getString("title");
                                 //String agreement_action = c.getString("agreement_action");
                                 String negotiation_id = c.getString("negotiation_id");
+                                String color = "0";
+                                String mycolor = "#ffffff";
 
                                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
-                                db.addOptions(id,title,null,null,negotiation_id);
+                                db.addOptions(id,title,null,null,color,mycolor,color,negotiation_id);
 
 
                             }
@@ -196,6 +198,10 @@ public class ResolvedViewActivity extends AppCompatActivity {
 
                     @Override
                     protected void onPostExecute(String optionsList) {
+
+                        new AsyncTaskParseopponentofferJson().execute();
+                        new AsyncTaskParsePointsJson().execute();
+
 
                     }
                 }
@@ -233,6 +239,7 @@ public class ResolvedViewActivity extends AppCompatActivity {
                                 String option_id = c.getString("option_id").toString();
                                 String myrating = c.getString("myrating").toString();
                                 String points = c.getString("points").toString();
+                                //String color = "0";
 
 ;                               DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
@@ -257,6 +264,103 @@ public class ResolvedViewActivity extends AppCompatActivity {
                         lstView.setItems(options);
                         pbpp.setVisibility(View.GONE);
                         txtMsg.setVisibility(View.GONE);
+
+
+                    }
+                }
+
+
+
+          /*
+                public class AsyncTaskParseLastofferJson extends AsyncTask<Void, Void, String> {
+
+                    final String TAG = "AsyncofferJson.java";
+
+                    @Override
+                    protected void onPreExecute() {
+                    }
+
+                    @Override
+                    protected String doInBackground(Void... arg0) {
+
+                        // instantiate our json parser
+                        JsonParser jParser = new JsonParser();
+                        String lastoffer = offerURL +"/last";
+                        // get json string from url
+                        JSONArray json = jParser.getJSONFromUrl(lastoffer);
+                        Log.d("lastoffer ", "" + json);
+                        try {
+
+                            // loop through all users
+                            for (int i = 0; i < json.length(); i++) {
+
+                                JSONObject c = json.getJSONObject(i);
+                                String option_id = c.getString("option_id");
+                                Log.e(TAG, "OPTION_ID: " + option_id);
+                                String opcolor = "#f0ad4e";
+
+                                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                                db.insertColor(option_id,option_id,opcolor);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(String json) {
+
+
+
+                    }
+                }*/
+
+
+
+                public class AsyncTaskParseopponentofferJson extends AsyncTask<Void, Void, String> {
+
+                    final String TAG = "AsyncofferJson.java";
+
+                    @Override
+                    protected void onPreExecute() {
+                    }
+
+                    @Override
+                    protected String doInBackground(Void... arg0) {
+
+                        // instantiate our json parser
+                        JsonParser jParser = new JsonParser();
+                        String lastoffer = offerURL +"/last";
+                        // get json string from url
+                        JSONArray json = jParser.getJSONFromUrl(lastoffer);
+                        Log.d("opponentofferURL ", "" + json);
+                        try {
+
+                            // loop through all users
+                            for (int i = 0; i < json.length(); i++) {
+
+                                JSONObject c = json.getJSONObject(i);
+                                String option_id = c.getString("option_id");
+                                Log.e(TAG, "OPTION_ID: " + option_id);
+                                String oppcolor = "#f0ad4e";
+                                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                                db.insertOpColor(option_id,option_id,oppcolor);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                        return null;
+                    }
+
+                    @Override
+                    protected void onPostExecute(String json) {
 
 
                     }

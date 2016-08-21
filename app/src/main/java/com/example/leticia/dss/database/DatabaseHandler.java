@@ -31,7 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 10;
 
     // Database Name
     private static final String DATABASE_NAME = "dss.db";
@@ -52,6 +52,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_OPTION_TITLE = "title";
     private static final String KEY_OPTION_RATING = "rating";
     private static final String KEY_OPTION_POINTS = "points";
+    private static final String KEY_OPTION_COLOR= "color";
+    private static final String KEY_OPTION_COLOR_OPPONENT= "opponent_color";
+    private static final String KEY_OPTION_COLOR_ID= "color_id";
+    private static final String KEY_OPTION_COLOR_OPPONENT_ID= "opponent_color_id";
     private static final String KEY_OPTION_NEGOTIATION_ID = "negotiation_id";
     private static final String KEY_ID = "id";
 
@@ -161,6 +165,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_OPTION_TITLE + " TEXT,"
                 + KEY_OPTION_RATING + " TEXT,"
                 + KEY_OPTION_POINTS + " TEXT,"
+                + KEY_OPTION_COLOR_ID + " TEXT,"
+                + KEY_OPTION_COLOR + " TEXT,"
+                + KEY_OPTION_COLOR_OPPONENT_ID + " TEXT,"
+                + KEY_OPTION_COLOR_OPPONENT + " TEXT,"
                 + KEY_OPTION_NEGOTIATION_ID + " TEXT)";
         db.execSQL(CREATE_OPTION_TABLE);
 
@@ -189,7 +197,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addOptions(String id, String title, String rating, String points,String negotiation_id) {
+    public void addOptions(String id, String title, String rating, String points,String color_id,String mycolor,String op_color_id,String negotiation_id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -197,6 +205,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_OPTION_TITLE, title);
         values.put(KEY_OPTION_RATING, rating);
         values.put(KEY_OPTION_POINTS, points);
+        values.put(KEY_OPTION_COLOR_ID, color_id);
+        values.put(KEY_OPTION_COLOR, mycolor);
+        values.put(KEY_OPTION_COLOR_OPPONENT, mycolor);
+        values.put(KEY_OPTION_COLOR_OPPONENT_ID, op_color_id);
         values.put(KEY_OPTION_NEGOTIATION_ID, negotiation_id);
 
         // Inserting Row ,
@@ -222,6 +234,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_OPTION_RATING, rating);
         values.put(KEY_OPTION_POINTS, points);
+        //values.put(KEY_OPTION_COLOR, color);
 
         // Inserting Row ,
         db.update(TABLE_OPTIONS, values, KEY_OPTION_ID+"="+option_id, null);
@@ -229,10 +242,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void insertColor(String option_id,String color_id,String mycolor ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_OPTION_COLOR_ID, color_id);
+        values.put(KEY_OPTION_COLOR, mycolor);
+
+        // Inserting Row ,
+        db.update(TABLE_OPTIONS, values, KEY_OPTION_ID+"="+option_id, null);
+        db.close();
+    }
+
+    public void insertOpColor(String option_id,String color,String oppcolor ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_OPTION_COLOR_OPPONENT_ID, color);
+        values.put(KEY_OPTION_COLOR_OPPONENT, oppcolor);
+
+        // Inserting Row ,
+        db.update(TABLE_OPTIONS, values, KEY_OPTION_ID+"="+option_id, null);
+        db.close();
+    }
+
     /**
      * Get list of Users from SQLite DB as Array List
      * @return
-     */
+
     public List<Myrating> getAllpoints() {
         List<Myrating> optionsList;
         optionsList = new ArrayList<Myrating>();
@@ -255,12 +290,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         database.close();
         return optionsList;
-    }
+    }*/
 
 
     /**
      * Getting user data from database
-     * */
+     *
     public ArrayList<HashMap<String, String>>  getmyratings(){
 
         ArrayList<HashMap<String, String>> rating = new ArrayList<HashMap<String, String>>();
@@ -286,7 +321,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return rating ;
 
-    }
+    }*/
 
 
     /**
@@ -340,17 +375,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 String title = cursor.getString(2);
                 String rating = cursor.getString(3);
                 String points = cursor.getString(4);
-
+                String color_id = cursor.getString(5);
+                String mycolor = cursor.getString(6);
+                String opponent_color_id = cursor.getString(7);
                 // Loop round our JSON list of lessons creating Lesson objects to use within our app
                 // Create the video object and add it to our list
-                optionsList.add(new Options(option_id , title, rating,points));
-
-
+                optionsList.add(new Options(option_id , title, rating,points,color_id,mycolor,opponent_color_id));
             } while (cursor.moveToNext());
+            Log.d("optionsList:check",""+optionsList.toString());
         }
         database.close();
         return optionsList;
     }
+
+
 
     /**
      * Get list of Users from SQLite DB as Array List
@@ -406,6 +444,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Delete All Rows
         db.delete(TABLE_OPTIONS, null, null);
         db.delete(TABLE_MYRATING, null, null);
+        //db.delete(TABLE_MYRATING, null, null);
         db.close();
     }
 

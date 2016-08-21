@@ -2224,12 +2224,14 @@ containing a value of this type.
         public static final int grey_buttom_round_bg=0x7f02004d;
         public static final int list_selector=0x7f02004e;
         public static final int list_selector_focused=0x7f02004f;
-        public static final int list_selector_pressed=0x7f020050;
-        public static final int list_selector_t=0x7f020051;
-        public static final int listview_bg=0x7f020052;
-        public static final int notification_template_icon_bg=0x7f020055;
-        public static final int progress=0x7f020053;
-        public static final int social_person=0x7f020054;
+        public static final int list_selector_green=0x7f020050;
+        public static final int list_selector_orange=0x7f020051;
+        public static final int list_selector_pressed=0x7f020052;
+        public static final int list_selector_t=0x7f020053;
+        public static final int listview_bg=0x7f020054;
+        public static final int notification_template_icon_bg=0x7f020057;
+        public static final int progress=0x7f020055;
+        public static final int social_person=0x7f020056;
     }
     public static final class id {
         public static final int action0=0x7f0c0085;

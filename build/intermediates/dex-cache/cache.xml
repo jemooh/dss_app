@@ -1,2 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/jkirwa/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.1.1_cc87c0484a428c7fa29b1f1f6ee2a395a512ec1f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.1.1_bc406d16df9df491a5c8b36e6a1922dbd2df5c31/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.1.1_e9193062348fddf101523c37b2e603eb196378d1/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.1.1_6d099662b9447b5a1e9f6269460d89530a24c633/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.1.1_88208c8ba15490e4eaf689777ff3f2e6d1b5460c/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="387e5be10180c7a636c39b13aa8ebe25b68c12c1">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_4439d0546ef6964a7be0090a2e59be0100323f06/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.19/a8f23f65fc1e522ee4a1a697ee569901a46741fa/library-1.0.19.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/library-1.0.19_63a7667490e30407f8eb548972a2c10d62d75dc8/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.1.1_25f44d37d88eca1679f43b48388fe02907b8aee7/classes.dex" />
+    </item>
+    <item
+        jar="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1081aca042b405beaf5d99c51ba3e53e6e56e52c">
+        <dex dex="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_08d5cfad784853774dc421f79b670761748e2897/classes.dex" />
+    </item>
+
+</items>

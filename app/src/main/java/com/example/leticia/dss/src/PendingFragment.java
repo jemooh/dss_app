@@ -34,9 +34,9 @@ import com.example.leticia.dss.widget.ItemsListView;
 
 
             private ListView involved, pending;
-            public static final String HOST = "http://e2dd78ab.ngrok.io";
-            private final String URL = "http://" + HOST + "/decisions/api";
-            private final String negURL = HOST + "/decisions/api/negotiations/:negotiation_id/users/:user_id/settings";
+            public static final String HOST = "http://ce549d14.ngrok.io";
+           // private final String URL = "http://" + HOST + "/decisions/api";
+           // private final String negURL = HOST + "/decisions/api/negotiations/:negotiation_id/users/:user_id/settings";
             ;
             public StringRequest request;
             private LoginActivity loginActivity;
@@ -111,7 +111,10 @@ import com.example.leticia.dss.widget.ItemsListView;
                 String optionsURL = HOST + "/decisions/api/negotiations/"+ negotiations_id +"/options";
                 String pointsURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/opponents/"+opponent_id+"/points";
                 String myratingURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/preferences/";
-
+                String offerURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/offers";
+                String opponentofferURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/offers/incoming/since/" + 0 +"/last";
+               //http://8034d581.ngrok.io/decisions/api/negotiations/15/users/25/offers/incoming/since/0/last
+                //http://f0e9ec55.ngrok.io/decisions/api/negotiations/3/users/9/offers/last
                 Intent si = new Intent(getActivity(), PendingViewActivity.class);
                 Bundle b=new Bundle();
 
@@ -120,6 +123,8 @@ import com.example.leticia.dss.widget.ItemsListView;
                 b.putString("optionsURL", optionsURL);
                 b.putString("pointsURL", pointsURL);
                 b.putString("myratingURL", myratingURL);
+                b.putString("offerURL", offerURL);
+                b.putString("opponentofferURL", opponentofferURL);
 
                 si.putExtras(b);
                 startActivity(si);

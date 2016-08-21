@@ -2,6 +2,7 @@ package com.example.leticia.dss.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +67,7 @@ import static com.example.leticia.dss.R.color.black;
 		   
 			
 			static class ViewHolder {
-				public TextView title, options;
+				public TextView title, options,color;
 			}
 		 
 		    //@Override
@@ -79,10 +80,12 @@ import static com.example.leticia.dss.R.color.black;
 					final ViewHolder viewHolder = new ViewHolder();
 					viewHolder.title = (TextView) convertView.findViewById(R.id.textViewoptntitle);
 					viewHolder.options = (TextView) convertView.findViewById(R.id.textViewpoints);
+					//viewHolder.color = (TextView) convertView.findViewById(R.id.textViewcolor);
 
 					convertView.setTag(viewHolder);
 					convertView.setTag(R.id.textViewoptntitle, viewHolder.title);
 					convertView.setTag(R.id.textViewpoints, viewHolder.options);
+					//convertView.setTag(R.id.textViewcolor, viewHolder.color);
 
 		            
 		            //convertView.setTag(R.id.checkBoxStatus, viewHolder.checkorder);
@@ -103,17 +106,42 @@ import static com.example.leticia.dss.R.color.black;
 				ViewHolder holder = (ViewHolder) convertView.getTag();
 		        // Get a single video from our list
 				Options Item = Items.get(position);
+
+
+					//holder.color.setBackgroundColor(Color.RED);//
+
 				if ((Item.getRating()!=null) && (Item.getPoints()!=null)) {
 					DecimalFormat dF = new DecimalFormat("0.00");
 					DecimalFormat dp = new DecimalFormat("0.0");
 					String rating = Item.getRating();
 					String points = Item.getPoints();
+				    String option_id = Item.getOption_id();
+				    String colorId = Item.getColor_id();
+					String mycolor = Item.getMycolor();
+					String opponentColorId = Item.getOpponent_color_id();
 
 					double r = Double.parseDouble(rating);
 					double p = Double.parseDouble(points);
 					holder.title.setText(Item.getTitle());
 					holder.options.setText("value " + ":" + dp.format(r) + "" + " bonus" + ":" + dF.format(p));
+
+					convertView.setBackgroundColor(Color.parseColor(mycolor));
+
+				   /* if (colorId.equals(option_id)){
+					//holder.color.setText("color me!");
+					//convertView.setBackgroundResource(R.drawable.list_selector_green);
+					convertView.setBackgroundColor(Color.parseColor(mycolor));}*/
+                         //if(opponentColorId==mycolor)
+					if (opponentColorId.equals(option_id)){
+						convertView.setBackgroundResource(R.drawable.list_selector_orange);}
+
 				}
+
+
+                         //String test = Item.getColor().toString();
+				//Log.d("",""+Item.getColor());
+
+				
 		        return convertView;
 		    }
 

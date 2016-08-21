@@ -9,12 +9,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.leticia.dss.Model.SeekBars;
-import com.example.leticia.dss.Model.SubmitPoints;
 import com.example.leticia.dss.R;
 import com.example.leticia.dss.database.DatabaseHandler;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +23,7 @@ import java.util.List;
 		 */
 		public class SeekBarAdapter extends BaseAdapter {
 			public List<SeekBars> Items;
-	        public List<SubmitPoints> values;
+	        //public List<SubmitPoints> values;
 	        //public static ArrayList<Myratings> myratings ;
 	        DatabaseHandler db;
 

@@ -31,7 +31,7 @@ import java.util.List;
                 public class ResolvedFragment extends Fragment implements ItemClickListener {
                     private ListView involved, pending;
                     //578835b2.ngrok.io
-                    public static final String HOST = "http://e2dd78ab.ngrok.io";
+                    public static final String HOST = "http://ce549d14.ngrok.io";
                     private final String URL = "http://" + HOST + "/decisions/api";
                     private final String negURL = HOST + "/decisions/api/negotiations/:negotiation_id/users/:user_id/settings";
                     ;
@@ -107,7 +107,7 @@ import java.util.List;
                         String optionsURL = HOST + "/decisions/api/negotiations/"+ negotiation_id +"/options";
                         //String optionsURL = "http://e5dadd62.ngrok.io/options.php";
                         String pointsURL =  HOST + "/decisions/api/negotiations/"+ negotiation_id +"/users/"+ negotiations_user_id + "/opponents/"+opponent_id+"/points";
-
+                        String offerURL =  HOST + "/decisions/api/negotiations/"+ negotiation_id +"/users/"+ negotiations_user_id + "/offers";
 
 
                         Intent si = new Intent(getActivity(), ResolvedViewActivity.class);
@@ -117,6 +117,7 @@ import java.util.List;
                         b.putString("settingsURL", settingsURL);
                         b.putString("optionsURL", optionsURL);
                         b.putString("pointsURL", pointsURL);
+                        b.putString("offerURL", offerURL);
 
                         si.putExtras(b);
                         startActivity(si);

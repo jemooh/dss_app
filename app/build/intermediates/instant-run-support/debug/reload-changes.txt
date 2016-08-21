@@ -1,5 +1,5 @@
 CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
-CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/LoginActivity$override.class
+CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/Adapters/SeekBarAdapter$1$override.class
+CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/Adapters/SeekBarAdapter$override.class
 CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/PendingFragment$override.class
-CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/ResolvedFragment$override.class
-CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/LoginActivity$1$override.class
+CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/Adapters/SeekBarAdapter$ViewHolder$override.class

@@ -4,7 +4,7 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="2243493999938"
+    timestamp="95040045160438"
     token="-1893136132788418702" >
 
     <task
@@ -20,16 +20,11 @@
         name="verifier"
         duration="0" />
 
-    <build timestamp="2221535285162" >
+    <build timestamp="94895328449157" >
         <artifact
             location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="2243493999938" />
-    <build timestamp="82604736037682" >
-        <artifact
-            location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/resources-debug.ap_"
-            type="RESOURCES" />
-    </build>
+    <build timestamp="95040045160438" />
 
 </instant-run>
