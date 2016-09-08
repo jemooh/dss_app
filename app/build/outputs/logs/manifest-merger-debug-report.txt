@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:2:1-43:12
+ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:3:5-38
 		INJECTED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml
@@ -42,13 +42,16 @@ ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidMa
 	android:name
 		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:11:22-78
 application
-ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:13:5-41:19
+ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:13:5-49:19
 MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:16:9-41
@@ -75,35 +78,48 @@ ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidMa
 	android:name
 		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:23:27-74
 activity#com.example.leticia.dss.src.MainActivity
-ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:26:9-30:47
+ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:26:9-29:50
 	android:label
 		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:28:13-41
-	android:launchMode
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:30:13-44
 	android:icon
 		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:29:13-47
 	android:name
 		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:27:13-45
 activity#com.example.leticia.dss.src.ResolvedViewActivity
-ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:31:9-35:61
+ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:30:9-34:61
 	android:label
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:33:13-39
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:32:13-41
 	android:parentActivityName
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:35:13-59
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:34:13-59
 	android:icon
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:34:13-47
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:33:13-47
 	android:name
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:32:13-53
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:31:13-53
+activity#com.example.leticia.dss.src.SplashScreen
+ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:35:9-39:15
+	android:label
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:37:13-32
+	android:icon
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:38:13-47
+	android:name
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:36:13-45
 activity#com.example.leticia.dss.src.PendingViewActivity
-ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:36:9-40:61
+ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:40:9-44:61
 	android:label
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:38:13-39
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:42:13-40
 	android:parentActivityName
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:40:13-59
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:44:13-59
 	android:icon
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:39:13-47
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:43:13-47
 	android:name
-		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:37:13-52
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:41:13-52
+meta-data#com.google.android.gms.version
+ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:46:9-48:69
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:48:13-66
+	android:name
+		ADDED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml:47:13-58
 uses-sdk
 INJECTED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/AndroidManifest.xml:20:5-43
@@ -113,6 +129,9 @@ MERGED from [com.android.support:appcompat-v7:23.1.1] /Users/jkirwa/AndroidStudi
 MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:23.1.1] /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from /Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/AndroidManifest.xml

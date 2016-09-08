@@ -26,18 +26,26 @@
         <activity
             android:name=".src.MainActivity"
             android:label="Negotiations"
-            android:icon="@mipmap/ic_launcher"
-            android:launchMode="singleTask" />
+            android:icon="@mipmap/ic_launcher" />
         <activity
             android:name=".src.ResolvedViewActivity"
-            android:label="StatusView"
+            android:label="ResolvedView"
             android:icon="@mipmap/ic_launcher"
             android:parentActivityName=".src.MainActivity"/>
         <activity
-            android:name=".src.PendingViewActivity"
-            android:label="StatusView"
+            android:name=".src.SplashScreen"
+            android:label="DSS"
             android:icon="@mipmap/ic_launcher"
-            android:parentActivityName=".src.MainActivity"/>
+            />
+        <activity
+            android:name=".src.PendingViewActivity"
+            android:label="PendingView"
+            android:icon="@mipmap/ic_launcher"
+            android:parentActivityName=".src.MainActivity"/><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

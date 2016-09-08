@@ -241,10 +241,8 @@ public class ResolvedViewActivity extends AppCompatActivity {
                                 String points = c.getString("points").toString();
                                 //String color = "0";
 
-;                               DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-
+                                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                                 db.insertPoints(option_id,myrating,points);
-
 
 
 
@@ -338,6 +336,7 @@ public class ResolvedViewActivity extends AppCompatActivity {
                         // get json string from url
                         JSONArray json = jParser.getJSONFromUrl(lastoffer);
                         Log.d("opponentofferURL ", "" + json);
+
                         try {
 
                             // loop through all users
@@ -347,8 +346,10 @@ public class ResolvedViewActivity extends AppCompatActivity {
                                 String option_id = c.getString("option_id");
                                 Log.e(TAG, "OPTION_ID: " + option_id);
                                 String oppcolor = "#f0ad4e";
+
                                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                                 db.insertOpColor(option_id,option_id,oppcolor);
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

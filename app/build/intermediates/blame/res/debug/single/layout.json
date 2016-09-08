@@ -152,6 +152,10 @@
         "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view.xml"
     },
     {
+        "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/layout/splashscreen.xml",
+        "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/res/layout/splashscreen.xml"
+    },
+    {
         "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
         "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_menu_item_action_area.xml"
     },

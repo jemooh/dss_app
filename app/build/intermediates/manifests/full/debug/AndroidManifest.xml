@@ -32,18 +32,28 @@
         <activity
             android:name="com.example.leticia.dss.src.MainActivity"
             android:icon="@mipmap/ic_launcher"
-            android:label="Negotiations"
-            android:launchMode="singleTask" />
+            android:label="Negotiations" />
         <activity
             android:name="com.example.leticia.dss.src.ResolvedViewActivity"
             android:icon="@mipmap/ic_launcher"
-            android:label="StatusView"
+            android:label="ResolvedView"
             android:parentActivityName="com.example.leticia.dss.src.MainActivity" />
+        <activity
+            android:name="com.example.leticia.dss.src.SplashScreen"
+            android:icon="@mipmap/ic_launcher"
+            android:label="DSS" />
         <activity
             android:name="com.example.leticia.dss.src.PendingViewActivity"
             android:icon="@mipmap/ic_launcher"
-            android:label="StatusView"
+            android:label="PendingView"
             android:parentActivityName="com.example.leticia.dss.src.MainActivity" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

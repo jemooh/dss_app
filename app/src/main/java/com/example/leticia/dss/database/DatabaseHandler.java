@@ -31,7 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 11;
 
     // Database Name
     private static final String DATABASE_NAME = "dss.db";
@@ -61,6 +61,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String KEY_MYRATING = "myrating";
     private static final String KEY_POINTS = "points";
+
+    private static final String KEY_USERNAME= "username";
+    private static final String KEY_PASSWORD = "password";
 
 
 
@@ -179,6 +182,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_POINTS + " TEXT)";
         db.execSQL(CREATE_MYRATING_TABLE);
 
+        String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
+                + KEY_ID + " INTEGER PRIMARY KEY,"
+                + KEY_USERNAME + " TEXT UNIQUE,"
+                + KEY_PASSWORD + " TEXT)";
+        db.execSQL(CREATE_USER_TABLE);
+
 
 
 
@@ -190,6 +199,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MYRATING);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OPTIONS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
 
         // Create tables again
         onCreate(db);
@@ -197,6 +207,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
+    public void adduserdetails(String username, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_USERNAME, username);
+        values.put(KEY_PASSWORD, password);
+
+        // Inserting Row ,
+        db.insert(TABLE_LOGIN, null, values);
+        db.close();
+    }
+
     public void addOptions(String id, String title, String rating, String points,String color_id,String mycolor,String op_color_id,String negotiation_id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -327,6 +349,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Getting user data from database
      * */
+		  /**/  public HashMap<String, String> getUserDetails(){
+        HashMap<String,String> user = new HashMap<String,String>();
+        String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Move to first row
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0){
+            user.put("name", cursor.getString(1));
+            user.put("pass", cursor.getString(2));
+        }
+        cursor.close();
+        db.close();
+        return user;
+        }
+
     public JSONArray getJsonmyratings() throws JSONException {
 
         JSONObject rowobject;
@@ -434,7 +473,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return rowCount;
     }
 
-
+    /**
+     * Re crate database
+     * Delete all tables and create them again
+     * */
+    public void resetTableLogin(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_LOGIN, null, null);
+        db.close();
+    }
     /**
      * Re crate database
      * Delete all tables and create them again
@@ -444,7 +491,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Delete All Rows
         db.delete(TABLE_OPTIONS, null, null);
         db.delete(TABLE_MYRATING, null, null);
-        //db.delete(TABLE_MYRATING, null, null);
         db.close();
     }
 

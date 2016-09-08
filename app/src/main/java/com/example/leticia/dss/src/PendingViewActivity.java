@@ -66,7 +66,6 @@ import java.util.TimeZone;
         JSONArray rating;
         private AlertDialog resultDialog;
         private ProgressBar pbpp;
-        public static final String HOST = "http://f0e9ec55.ngrok.io";
 
         Context c;
         private String point, pointArray;
@@ -715,12 +714,15 @@ import java.util.TimeZone;
 
             private ProgressDialog progressDialog = new ProgressDialog(
                     PendingViewActivity.this);
-
+            //private Context context; //this line
+           /* public AsyncTaskParseresolvedOfferJson(Context context) {
+                this.context = context;
+            }*/
             protected void onPreExecute() {
 
 
                 dialogTitle = "Added to queue";
-                statusMessage = "The Your agreed choice is scheduled to be sent";
+                statusMessage = "Your selection is scheduled to be sent";
                 resultDialog = new AlertDialog.Builder(PendingViewActivity.this)
                         .create();
                 resultDialog.setTitle(dialogTitle);
@@ -728,8 +730,8 @@ import java.util.TimeZone;
                 resultDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Intent intent = new Intent(PendingViewActivity.this, SplashScreen.class);
+                                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                                 startActivity(intent);
                                 resultDialog.dismiss();
@@ -754,7 +756,7 @@ import java.util.TimeZone;
                     status = json.get("status").toString();
                     if (status.equals("ok")) {
                         dialogTitle = "Success";
-                        statusMessage = "Successfully added option_id";
+                        statusMessage = "Successfully added selection";
                     } else {
                         dialogTitle = "Failure";
                         statusMessage = "An error occurred!";
@@ -784,11 +786,8 @@ import java.util.TimeZone;
                                 "OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
+                                        Intent intent = new Intent(PendingViewActivity.this, SplashScreen.class);
                                         startActivity(intent);
-                                        //finish();
                                         resultDialog.dismiss();
                                         finish();
                                     }

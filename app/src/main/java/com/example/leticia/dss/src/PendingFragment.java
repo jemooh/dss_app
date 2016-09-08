@@ -1,6 +1,6 @@
 package com.example.leticia.dss.src;
 
-import android.app.Activity;
+        import android.app.Activity;
         import android.content.Intent;
         import android.os.Bundle;
         import android.support.v4.app.Fragment;
@@ -34,7 +34,7 @@ import com.example.leticia.dss.widget.ItemsListView;
 
 
             private ListView involved, pending;
-            public static final String HOST = "http://ce549d14.ngrok.io";
+            public static final String HOST = "http://3b496a31.ngrok.io";
            // private final String URL = "http://" + HOST + "/decisions/api";
            // private final String negURL = HOST + "/decisions/api/negotiations/:negotiation_id/users/:user_id/settings";
             ;

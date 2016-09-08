@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
-        "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_seekbar_thumb_material.xml"
-    },
-    {
         "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
         "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
+        "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
@@ -20,12 +20,12 @@
         "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/res/drawable/list_selector.xml"
     },
     {
-        "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",
-        "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/drawable/design_snackbar_background.xml"
-    },
-    {
         "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
         "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",
+        "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/drawable/design_snackbar_background.xml"
     },
     {
         "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
