@@ -730,7 +730,7 @@ import java.util.TimeZone;
                 resultDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(PendingViewActivity.this, SplashScreen.class);
+                                Intent intent = new Intent(PendingViewActivity.this, MainActivity.class);
                                 //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                                 startActivity(intent);
@@ -786,7 +786,7 @@ import java.util.TimeZone;
                                 "OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
-                                        Intent intent = new Intent(PendingViewActivity.this, SplashScreen.class);
+                                        Intent intent = new Intent(PendingViewActivity.this, MainActivity.class);
                                         startActivity(intent);
                                         resultDialog.dismiss();
                                         finish();

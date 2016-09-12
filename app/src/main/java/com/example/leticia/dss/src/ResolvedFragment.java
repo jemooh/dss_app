@@ -31,7 +31,7 @@ import java.util.List;
                 public class ResolvedFragment extends Fragment implements ItemClickListener {
                     private ListView involved, pending;
                     //578835b2.ngrok.io
-                    public static final String HOST = "http://3b496a31.ngrok.io";
+                    public static final String HOST = "http://f0aba557.ngrok.io";
                     private final String URL = "http://" + HOST + "/decisions/api";
                     private final String negURL = HOST + "/decisions/api/negotiations/:negotiation_id/users/:user_id/settings";
                     ;

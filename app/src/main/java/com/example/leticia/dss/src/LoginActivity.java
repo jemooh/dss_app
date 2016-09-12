@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    public static final String HOST = "http://3b496a31.ngrok.io";
+    public static final String HOST = "http://f0aba557.ngrok.io";
     private EditText edtusername,edtpassword;
     private Button btnLogin;
     private TextView result,txtlogin_error;
