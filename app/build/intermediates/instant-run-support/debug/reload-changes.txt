@@ -1,4 +1,5 @@
 CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
-CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/MainActivity$override.class
-CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/MainActivity$AsyncTaskParseNegotiationsJson$override.class
-CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/MainActivity$2$override.class
+CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/PendingViewActivity$AsyncTaskParseOfferJson$1$override.class
+CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/PendingViewActivity$AsyncTaskParseOfferJson$override.class
+CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/PendingViewActivity$AsyncTaskParseresolvedOfferJson$override.class
+CHANGED,/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/example/leticia/dss/src/PendingViewActivity$AsyncTaskParseagreementreachedJson$override.class

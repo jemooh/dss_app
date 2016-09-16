@@ -46,6 +46,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/txtagreement"
         android:layout_marginTop="17dp"
+        android:textSize="20sp"
         android:layout_below="@+id/txtbalance"
         android:layout_centerHorizontal="true" />
 

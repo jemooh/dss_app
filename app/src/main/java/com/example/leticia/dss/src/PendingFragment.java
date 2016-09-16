@@ -11,6 +11,8 @@ package com.example.leticia.dss.src;
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
+        import android.widget.ProgressBar;
+        import android.widget.TextView;
 
         import com.android.volley.RequestQueue;
         import com.android.volley.toolbox.StringRequest;
@@ -47,6 +49,8 @@ import com.example.leticia.dss.widget.ItemsListView;
             public RequestQueue requestQueue;
             ArrayList<String> listItems = new ArrayList<String>();
             ItemsListView listView;
+            ProgressBar pbpp;
+            TextView txtMsg;
             NegotiationsAdapter adapter;
             List<Negotiation> items;
             @Override
@@ -58,7 +62,8 @@ import com.example.leticia.dss.widget.ItemsListView;
 
                 requestQueue = Volley.newRequestQueue(getActivity());
 
-
+                pbpp = (ProgressBar) view.findViewById(R.id.pbppl);
+                txtMsg = (TextView) view.findViewById(R.id.progressMsg2);
                 listView = (ItemsListView) view.findViewById(R.id.todayListView);
                 items = new ArrayList<Negotiation>();
 
@@ -67,6 +72,8 @@ import com.example.leticia.dss.widget.ItemsListView;
 
                 if (bundle != null) {
                     final String negotiations = bundle.getString("negotiations");
+                    pbpp.setVisibility(View.VISIBLE);
+                    txtMsg.setVisibility(View.VISIBLE);
 
                     try {
                         JSONArray negotiationsArray = new JSONArray(negotiations);
@@ -91,6 +98,8 @@ import com.example.leticia.dss.widget.ItemsListView;
                 }
                 listView.setOnItemClickListener(this);
                 listView.setItems(items);
+                pbpp.setVisibility(View.GONE);
+                txtMsg.setVisibility(View.GONE);
 
                 return view;
             }
@@ -113,6 +122,7 @@ import com.example.leticia.dss.widget.ItemsListView;
                 String myratingURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/preferences/";
                 String offerURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/offers";
                 String opponentofferURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/offers/incoming/since/" + 0 +"/last";
+                String agreementRdURL =  HOST + "/decisions/api/negotiations/"+ negotiations_id +"/users/"+ negotiations_user_id + "/offers/incoming/since/";
                //http://8034d581.ngrok.io/decisions/api/negotiations/15/users/25/offers/incoming/since/0/last
                 //http://f0e9ec55.ngrok.io/decisions/api/negotiations/3/users/9/offers/last
                 Intent si = new Intent(getActivity(), PendingViewActivity.class);
@@ -125,6 +135,7 @@ import com.example.leticia.dss.widget.ItemsListView;
                 b.putString("myratingURL", myratingURL);
                 b.putString("offerURL", offerURL);
                 b.putString("opponentofferURL", opponentofferURL);
+                b.putString("agreementRdURL", agreementRdURL);
 
                 si.putExtras(b);
                 startActivity(si);

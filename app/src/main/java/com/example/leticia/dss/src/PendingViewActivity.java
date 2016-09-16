@@ -48,7 +48,7 @@ import java.util.TimeZone;
 
 
     public class PendingViewActivity extends AppCompatActivity implements OptionsClickListener {
-        private String title, settingsURL, optionsURL, pointsURL, myratingURL,offerURL,opponentofferURL;
+        private String title, settingsURL, optionsURL, pointsURL, myratingURL,offerURL,opponentofferURL,agreementRdURL;
         private String name, balance, test;
         public TextView txtTitle, txtUsers, txtBalance, txtAgreement, txtlike, txtdislike, txtMsg;
         public Button btn;
@@ -101,6 +101,7 @@ import java.util.TimeZone;
             this.myratingURL = b.getString("myratingURL");
             this.offerURL = b.getString("offerURL");
             this.opponentofferURL = b.getString("opponentofferURL");
+            this.agreementRdURL = b.getString("agreementRdURL");
 
             Log.d("Settings URL", "  " + settingsURL);
             Log.d("Options URL", "  " + optionsURL);
@@ -127,6 +128,8 @@ import java.util.TimeZone;
             txtlike.setVisibility(View.GONE);
             txtdislike.setVisibility(View.GONE);
 
+            DatabaseHandler db = new DatabaseHandler(this);
+            db.resetTables();
 
             // we will using AsyncTask during parsing
             new AsyncTaskParseSettingsJson().execute();
@@ -187,7 +190,7 @@ import java.util.TimeZone;
 
 
                 dialogTitle = "Added to queue";
-                statusMessage = "The Your points is scheduled to be sent";
+                statusMessage = "Your selections are scheduled to be sent";
                 resultDialog = new AlertDialog.Builder(PendingViewActivity.this)
                         .create();
                 resultDialog.setTitle(dialogTitle);
@@ -197,9 +200,10 @@ import java.util.TimeZone;
                             public void onClick(DialogInterface dialog, int which) {
                                 resultDialog.dismiss();
                                 finish();
+                                startActivity(getIntent());
                             }
                         });
-                resultDialog.show();
+                //resultDialog.show();
             }
 
             @Override
@@ -235,7 +239,7 @@ import java.util.TimeZone;
                     status = json.get("status").toString();
                     if (status.equals("ok")) {
                         dialogTitle = "Success";
-                        statusMessage = "Successfully added points";
+                        statusMessage = "Successfully submitted your selections";
 
                     } else {
                         dialogTitle = "Failure";
@@ -259,7 +263,8 @@ import java.util.TimeZone;
                     if (resultDialog.isShowing()) {
                         resultDialog.dismiss();
                     }
-                    if (status.equals("ok")) {
+                    startActivity(getIntent());
+                    /*if (status.equals("ok")) {
                         resultDialog = new AlertDialog.Builder(
                                 PendingViewActivity.this).create();
                         resultDialog.setTitle(dialogTitle);
@@ -269,6 +274,7 @@ import java.util.TimeZone;
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
                                         finish();
+                                        startActivity(getIntent());
                                     }
                                 });
                         resultDialog.show();
@@ -283,10 +289,11 @@ import java.util.TimeZone;
                                                         int which) {
                                         resultDialog.dismiss();
                                         finish();
+                                        startActivity(getIntent());
                                     }
                                 });
                         resultDialog.show();
-                    }
+                    }*/
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -436,6 +443,8 @@ import java.util.TimeZone;
                         pointsnull = "nullArray";
                     }
 
+                    Log.d("to check array",""+json);
+
                     // get the array of users
                     //dataJsonArr = json.getJSONArray("Users");
 
@@ -566,6 +575,8 @@ import java.util.TimeZone;
         public class AsyncTaskParseopponentofferJson extends AsyncTask<Void, Void, String> {
 
             final String TAG = "AsyncofferJson.java";
+            String agreentment_check;
+            String id;
 
             @Override
             protected void onPreExecute() {
@@ -587,10 +598,14 @@ import java.util.TimeZone;
 
                         JSONObject c = json.getJSONObject(i);
                         String option_id = c.getString("option_id");
+                        id = c.getString("id");
+
                         Log.e(TAG, "OPTION_ID: " + option_id);
                         String oppcolor = "#f0ad4e";
+
                         DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                         db.insertOpColor(option_id,option_id,oppcolor);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -603,11 +618,57 @@ import java.util.TimeZone;
 
             @Override
             protected void onPostExecute(String json) {
-
-
+              new  AsyncTaskParseagreementreachedJson().execute(id);
             }
         }
 
+        public class AsyncTaskParseagreementreachedJson extends AsyncTask<String, Void, String> {
+
+            final String TAG = "AsyncofferJson.java";
+            String agreement_check;
+
+            @Override
+            protected void onPreExecute() {
+            }
+
+            @Override
+            protected String doInBackground(String... arg0) {
+
+                String id = arg0[0];
+
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
+                //String lastoffer = offerURL +"/last";
+                // get json string from url
+                JSONArray json = jParser.getJSONFromUrl(agreementRdURL+id+"/last");
+                Log.d("agreementRdURL ", "" + json);
+                try {
+
+                    // loop through all users
+                    for (int i = 0; i < json.length(); i++) {
+
+                        JSONObject c = json.getJSONObject(i);
+                        agreement_check = c.getString("agreement");
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String json) {
+                if (agreement_check!=null){
+                txtAgreement.setText("Agreement Reached" );
+                lstView.setEnabled(false);}
+
+            }
+        }
 
 
             public class AsyncTaskParseOfferJson extends AsyncTask<String, Void, Boolean> {
@@ -620,8 +681,8 @@ import java.util.TimeZone;
                     protected void onPreExecute() {
 
 
-                        dialogTitle = "Added to queue";
-                        statusMessage = "The Your choice is scheduled to be sent";
+                        /*dialogTitle = "Added to queue";
+                        statusMessage = "Your selection is scheduled to be sent";
                         resultDialog = new AlertDialog.Builder(PendingViewActivity.this)
                                 .create();
                         resultDialog.setTitle(dialogTitle);
@@ -631,9 +692,10 @@ import java.util.TimeZone;
                                     public void onClick(DialogInterface dialog, int which) {
                                         resultDialog.dismiss();
                                         finish();
+                                        startActivity(getIntent());
                                     }
                                 });
-                        resultDialog.show();
+                        //resultDialog.show();*/
                     }
 
                     @Override
@@ -651,7 +713,7 @@ import java.util.TimeZone;
                             status = json.get("status").toString();
                             if (status.equals("ok")) {
                                 dialogTitle = "Success";
-                                statusMessage = "Successfully added option_id";
+                                statusMessage = "Successfully submitted your selection";
                             } else {
                                 dialogTitle = "Failure";
                                 statusMessage = "An error occurred!";
@@ -671,7 +733,9 @@ import java.util.TimeZone;
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
                             }
-                            if (status.equals("ok")) {
+
+                            startActivity(getIntent());
+                           /* if (status.equals("ok")) {
                                 resultDialog = new AlertDialog.Builder(
                                         PendingViewActivity.this).create();
                                 resultDialog.setTitle(dialogTitle);
@@ -681,6 +745,7 @@ import java.util.TimeZone;
                                             public void onClick(DialogInterface dialog,
                                                                 int which) {
                                                 finish();
+                                                startActivity(getIntent());
                                             }
                                         });
                                 resultDialog.show();
@@ -695,12 +760,13 @@ import java.util.TimeZone;
                                                                 int which) {
                                                 resultDialog.dismiss();
                                                 finish();
+                                                startActivity(getIntent());
 
 
                                             }
                                         });
                                 resultDialog.show();
-                            }
+                            }*/
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -721,7 +787,7 @@ import java.util.TimeZone;
             protected void onPreExecute() {
 
 
-                dialogTitle = "Added to queue";
+                /*dialogTitle = "Added to queue";
                 statusMessage = "Your selection is scheduled to be sent";
                 resultDialog = new AlertDialog.Builder(PendingViewActivity.this)
                         .create();
@@ -730,15 +796,16 @@ import java.util.TimeZone;
                 resultDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(PendingViewActivity.this, MainActivity.class);
+                                //Intent intent = new Intent(PendingViewActivity.this, MainActivity.class);
                                 //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                                startActivity(intent);
+                                //startActivity(intent);
                                 resultDialog.dismiss();
                                 finish();
+                                startActivity(getIntent());
                             }
                         });
-                resultDialog.show();
+               // resultDialog.show();*/
             }
 
             @Override
@@ -756,7 +823,7 @@ import java.util.TimeZone;
                     status = json.get("status").toString();
                     if (status.equals("ok")) {
                         dialogTitle = "Success";
-                        statusMessage = "Successfully added selection";
+                        statusMessage = "Successfully submitted your selection";
                     } else {
                         dialogTitle = "Failure";
                         statusMessage = "An error occurred!";
@@ -777,7 +844,8 @@ import java.util.TimeZone;
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                     }
-                    if (status.equals("ok")) {
+                    startActivity(getIntent());
+                   /* if (status.equals("ok")) {
                         resultDialog = new AlertDialog.Builder(
                                 PendingViewActivity.this).create();
                         resultDialog.setTitle(dialogTitle);
@@ -786,10 +854,11 @@ import java.util.TimeZone;
                                 "OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
-                                        Intent intent = new Intent(PendingViewActivity.this, MainActivity.class);
-                                        startActivity(intent);
+                                        //Intent intent = new Intent(PendingViewActivity.this, MainActivity.class);
+                                        //startActivity(intent);
                                         resultDialog.dismiss();
                                         finish();
+                                        startActivity(getIntent());
                                     }
                                 });
                         resultDialog.show();
@@ -804,11 +873,12 @@ import java.util.TimeZone;
                                                         int which) {
                                         resultDialog.dismiss();
                                         finish();
+                                        startActivity(getIntent());
 
                                     }
                                 });
                         resultDialog.show();
-                    }
+                    }*/
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

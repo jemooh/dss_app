@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -48,6 +50,8 @@ import java.util.List;
                     ItemsListView listView;
                     NegotiationsAdapter adapter;
                     List<Negotiation> items;
+                    ProgressBar pbpp;
+                    TextView txtMsg;
 
                     @Override
                     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ import java.util.List;
                         View view = inflater.inflate(R.layout.closed_fragment, container, false);
 
                         listView = (ItemsListView) view.findViewById(R.id.todayListView);
+                        pbpp = (ProgressBar) view.findViewById(R.id.pbppl);
+                        txtMsg = (TextView) view.findViewById(R.id.progressMsg2);
                         // Construct the data source
                          items = new ArrayList<Negotiation>();
 
@@ -88,6 +94,8 @@ import java.util.List;
                         }
                         listView.setOnItemClickListener(this);
                         listView.setItems(items);
+                        pbpp.setVisibility(View.GONE);
+                        txtMsg.setVisibility(View.GONE);
                         return view;
                     }
 
