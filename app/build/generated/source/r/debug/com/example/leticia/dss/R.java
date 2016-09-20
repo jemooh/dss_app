@@ -2415,6 +2415,7 @@ containing a value of this type.
         public static final int text=0x7f0c0092;
         public static final int text2=0x7f0c0090;
         public static final int textSpacerNoButtons=0x7f0c004f;
+        public static final int textView=0x7f0c00a5;
         public static final int textView3=0x7f0c006f;
         public static final int textView4=0x7f0c0070;
         public static final int textViewdis=0x7f0c009c;

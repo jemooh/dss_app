@@ -11,7 +11,7 @@
         android:indeterminate="false"
         android:max="100"
         android:progress="50"
-        android:background="#b6b4b4"
+        android:background="#fcfafa"
         android:layout_below="@+id/txtValue"
         android:layout_centerHorizontal="true" />
 

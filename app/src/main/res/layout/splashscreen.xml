@@ -5,12 +5,12 @@
     android:layout_height="fill_parent"
     android:id="@+id/TheSplashLayout"
     android:layout_gravity="center"
-    android:background="@color/light_gry">
+    android:background="#ffffff">
 
     <ImageView
         android:id="@+id/SplashImageView"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:src="@mipmap/ic_launcher"
         android:layout_marginTop="99dp"
         android:layout_alignParentTop="true"
@@ -22,6 +22,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_below="@+id/SplashImageView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Loading Negotiations..."
+        android:id="@+id/textView"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/prbTask"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
