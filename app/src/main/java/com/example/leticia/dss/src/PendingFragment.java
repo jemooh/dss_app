@@ -36,7 +36,7 @@ import com.example.leticia.dss.widget.ItemsListView;
 
 
             private ListView involved, pending;
-            public static final String HOST = "http://f0aba557.ngrok.io";
+            private static final String HOST = LoginActivity.HOST;
            // private final String URL = "http://" + HOST + "/decisions/api";
            // private final String negURL = HOST + "/decisions/api/negotiations/:negotiation_id/users/:user_id/settings";
             ;

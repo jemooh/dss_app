@@ -32,12 +32,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    public static final String HOST = "http://f0aba557.ngrok.io";
+    public static final String HOST = "http://ead2f45f.ngrok.io";
     private EditText edtusername,edtpassword;
     private Button btnLogin;
     private TextView result,txtlogin_error;
     public RequestQueue requestQueue;
-    private static final String URL =  HOST +"/decisions/api/login";
+    public static final String URL =  HOST +"/decisions/api/login";
     //private static final String URL = "http://192.168.1.104/decisions/api/login";
     private StringRequest request;
     private String passwd;

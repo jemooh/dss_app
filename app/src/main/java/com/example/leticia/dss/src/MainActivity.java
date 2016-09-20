@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             private LoginActivity loginActivity;
             private  String username,userPassword;
             DatabaseHandler dbHandler;
-            public static final String HOST = "http://f0aba557.ngrok.io";
+            private static final String HOST = LoginActivity.HOST;
             private String loginurl = HOST +"/decisions/api/login";
             /**
              * ATTENTION: This was auto-generated to implement the App Indexing API.

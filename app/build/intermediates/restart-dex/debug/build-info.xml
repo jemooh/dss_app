@@ -4,7 +4,7 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="54109120962949"
+    timestamp="189527632549446"
     token="-1893136132788418702" >
 
     <task
@@ -21,23 +21,13 @@
         duration="0" />
 
     <artifact
-        location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/resources-debug.ap_"
-        type="RESOURCES" />
+        location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="53263300614625" >
+    <build timestamp="189527632549446" >
         <artifact
             location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
-    </build>
-    <build timestamp="53996143709120" >
-        <artifact
-            location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
-            type="DEX" />
-    </build>
-    <build timestamp="54109120962949" >
-        <artifact
-            location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/resources-debug.ap_"
-            type="RESOURCES" />
     </build>
 
 </instant-run>
