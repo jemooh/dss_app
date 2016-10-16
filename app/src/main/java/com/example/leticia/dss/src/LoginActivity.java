@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    public static final String HOST = "http://ead2f45f.ngrok.io";
+    public static final String HOST = "http://7f6c25ed.ngrok.io";
     private EditText edtusername,edtpassword;
     private Button btnLogin;
     private TextView result,txtlogin_error;
@@ -80,23 +80,6 @@ public class LoginActivity extends AppCompatActivity {
                                         JSONObject jsonObject = new JSONObject(response);
 
                                                 if(jsonObject.get("status").equals("ok")){
-                                                    //save user id on shared preference.
-                                                   /* String userID = jsonObject.get("id").toString();
-                                                    Log.d("userID",".."+userID);
-
-                                                    SharedPreferenceManager.saveUserId(LoginActivity.this, userID);
-
-                                                    Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
-                                                    intent.putExtra("negotiations", jsonObject.get("negotiations").toString());
-                                                    startActivity(intent);
-                                                    Log.d("username",""+edtusername);
-                                                    progressDialog.dismiss();*/
-
-                                                    /*{"id":"1"
-                                                    ,"negotiations":[{"id":1,"title":"Drinks (0)","opponent":6,"negotiations_users_id":"4","active":"0"},{"id":2,"title":"Drinks (1)","opponent":7,"negotiations_users_id":"5","active":"0"},{"id":4,"title":"Drinks (4)","opponent":11,"negotiations_users_id":"10","active":"0"},{"id":6,"title":"new1 (0)","opponent":14,"negotiations_users_id":"12","active":"0"},{"id":7,"title":"new1 (1)","opponent":13,"negotiations_users_id":"15","active":"0"},{"id":8,"title":"test (0)","opponent":17,"negotiations_users_id":"16","active":"0"},{"id":9,"title":"Not set up (0)","opponent":19,"negotiations_users_id":"18","active":"0"},{"id":12,"title":"ALL DRINKS (0)","opponent":21,"negotiations_users_id":"20","active":"0"},{"id":14,"title":"1234 (0)","opponent":24,"negotiations_users_id":"22","active":"0"},{"id":15,"title":"1234 (1)","opponent":25,"negotiations_users_id":"23","active":"0"},{"id":18,"title":"last_test (2)","opponent":28,"negotiations_users_id":"29","active":"1"},{"id":17,"title":"last_test (1)","opponent":27,"negotiations_users_id":"30","active":"1"},
-                                                    {"id":16,"title":"last_test (0)","opponent":26,"negotiations_users_id":"31","active":"1"}],
-                                                    "password":"d9b1d7db4cd6e70935368a1efb10e377",
-                                                    "status":"ok"}*/
 
                                                     DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 

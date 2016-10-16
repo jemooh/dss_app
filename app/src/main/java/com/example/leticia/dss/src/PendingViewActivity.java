@@ -11,7 +11,11 @@ import android.renderscript.Sampler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,6 +41,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -885,6 +890,54 @@ import java.util.TimeZone;
 
             }
         }
+
+        @Override
+        public boolean onMenuOpened(int featureId, Menu menu)
+        {
+            if(featureId == Window.FEATURE_ACTION_BAR && menu != null){
+                if(menu.getClass().getSimpleName().equals("MenuBuilder")){
+                    try{
+                        Method m = menu.getClass().getDeclaredMethod(
+                                "setOptionalIconsVisible", Boolean.TYPE);
+                        m.setAccessible(true);
+                        m.invoke(menu, true);
+                    }
+                    catch(NoSuchMethodException e){
+                    }
+                    catch(Exception e){
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+            return super.onMenuOpened(featureId, menu);
+        }
+
+
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+
+        }
+
+
+
+
+
+
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch (item.getItemId()) {
+
+                case R.id.menu_refresh:
+                    startActivity(getIntent());
+
+                    break;
+
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
 
 
 

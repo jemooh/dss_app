@@ -40,6 +40,10 @@
         "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/res/drawable/list_selector_orange.xml"
     },
     {
+        "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/ic_autorenew_black.xml",
+        "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/src/main/res/drawable/ic_autorenew_black.xml"
+    },
+    {
         "merged": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
         "source": "/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_seekbar_track_material.xml"
     },

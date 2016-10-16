@@ -10,4 +10,5 @@
     <string name="host">209.114.126.45</string>
     <string name="optionsURL">209.114.126.45/decisions/api/negotiations/:negotiation_id/users/:user_id/settings</string>
     <string name="Dislike">Dislike</string>
+    <string name="menu_refresh">refresh</string>
 </resources>

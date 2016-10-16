@@ -4,37 +4,43 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="191414066641633"
-    token="-1893136132788418702" >
+    timestamp="22857774810839"
+    token="-1893136132788418702"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="1200" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="1159" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="40" />
     <task
         name="verifier"
-        duration="0" />
+        duration="34" />
 
-    <build timestamp="190646683715235" >
+    <artifact
+        location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/reload-dex/debug/classes.dex"
+        type="RELOAD_DEX" />
+
+    <build timestamp="22668571853632" >
         <artifact
             location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="190836099855219" >
+    <build
+        timestamp="22857774810839"
+        verifier="COMPATIBLE" >
         <artifact
-            location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
-            type="DEX" />
+            location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/reload-dex/debug/classes.dex"
+            type="RELOAD_DEX" />
     </build>
     <build timestamp="191400434754754" >
         <artifact
             location="/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/res/resources-debug.ap_"
             type="RESOURCES" />
     </build>
-    <build timestamp="191414066641633" />
 
 </instant-run>

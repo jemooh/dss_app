@@ -2264,16 +2264,17 @@ containing a value of this type.
         public static final int gradient=0x7f02004d;
         public static final int gradient_hover=0x7f02004e;
         public static final int grey_buttom_round_bg=0x7f02004f;
-        public static final int list_selector=0x7f020050;
-        public static final int list_selector_focused=0x7f020051;
-        public static final int list_selector_green=0x7f020052;
-        public static final int list_selector_orange=0x7f020053;
-        public static final int list_selector_pressed=0x7f020054;
-        public static final int list_selector_t=0x7f020055;
-        public static final int listview_bg=0x7f020056;
-        public static final int notification_template_icon_bg=0x7f020059;
-        public static final int progress=0x7f020057;
-        public static final int social_person=0x7f020058;
+        public static final int ic_autorenew_black=0x7f020050;
+        public static final int list_selector=0x7f020051;
+        public static final int list_selector_focused=0x7f020052;
+        public static final int list_selector_green=0x7f020053;
+        public static final int list_selector_orange=0x7f020054;
+        public static final int list_selector_pressed=0x7f020055;
+        public static final int list_selector_t=0x7f020056;
+        public static final int listview_bg=0x7f020057;
+        public static final int notification_template_icon_bg=0x7f02005a;
+        public static final int progress=0x7f020058;
+        public static final int social_person=0x7f020059;
     }
     public static final class id {
         public static final int SplashImageView=0x7f0c00a3;
@@ -2354,6 +2355,7 @@ containing a value of this type.
         public static final int loginPassword=0x7f0c0081;
         public static final int login_error=0x7f0c0084;
         public static final int media_actions=0x7f0c008b;
+        public static final int menu_refresh=0x7f0c00a6;
         public static final int middle=0x7f0c0031;
         public static final int mini=0x7f0c002f;
         public static final int multiply=0x7f0c0026;
@@ -2516,6 +2518,9 @@ containing a value of this type.
         public static final int splashscreen=0x7f04003c;
         public static final int support_simple_spinner_dropdown_item=0x7f04003d;
     }
+    public static final class menu {
+        public static final int menu_main=0x7f0d0000;
+    }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
     }
@@ -2578,13 +2583,14 @@ containing a value of this type.
         public static final int host=0x7f060038;
         public static final int like=0x7f060039;
         public static final int logout=0x7f06003a;
-        public static final int neg=0x7f06003b;
-        public static final int optionsURL=0x7f06003c;
-        public static final int prompt_password=0x7f06003d;
-        public static final int prompt_username=0x7f06003e;
-        public static final int sign_in=0x7f06003f;
+        public static final int menu_refresh=0x7f06003b;
+        public static final int neg=0x7f06003c;
+        public static final int optionsURL=0x7f06003d;
+        public static final int prompt_password=0x7f06003e;
+        public static final int prompt_username=0x7f06003f;
+        public static final int sign_in=0x7f060040;
         public static final int status_bar_notification_info_overflow=0x7f060031;
-        public static final int welcome=0x7f060040;
+        public static final int welcome=0x7f060041;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f09007e;

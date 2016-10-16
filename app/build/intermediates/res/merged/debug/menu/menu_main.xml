@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:afriscout="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/menu_refresh"
+        android:title="@string/menu_refresh"
+        android:orderInCategory="1"
+        afriscout:showAsAction="always"
+        android:icon="@drawable/ic_autorenew_black" />
+
+</menu>

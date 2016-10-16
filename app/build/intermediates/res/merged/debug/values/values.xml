@@ -339,6 +339,7 @@
     <string name="host">209.114.126.45</string>
     <string name="like">Like</string>
     <string name="logout">logout</string>
+    <string name="menu_refresh">refresh</string>
     <string name="neg">Neg Involved</string>
     <string name="optionsURL">209.114.126.45/decisions/api/negotiations/:negotiation_id/users/:user_id/settings</string>
     <string name="prompt_password">Password</string>
