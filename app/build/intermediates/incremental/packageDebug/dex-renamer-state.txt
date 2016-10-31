@@ -1,0 +1,7 @@
+#Mon Oct 31 02:55:29 EAT 2016
+base.0=/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_4439d0546ef6964a7be0090a2e59be0100323f06
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_08d5cfad784853774dc421f79b670761748e2897/classes.dex
+base.1=/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_08d5cfad784853774dc421f79b670761748e2897
+file.0=/Users/jkirwa/AndroidStudioProjets/dss_new/DSS/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_4439d0546ef6964a7be0090a2e59be0100323f06/classes.dex
