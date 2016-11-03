@@ -8,19 +8,16 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.renderscript.Sampler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -32,7 +29,7 @@ import com.example.leticia.dss.R;
 import com.example.leticia.dss.database.DatabaseHandler;
 import com.example.leticia.dss.listener.OptionsClickListener;
 import com.example.leticia.dss.utils.JsonParser;
-import com.example.leticia.dss.utils.JsonParser2;
+import com.example.leticia.dss.utils.JsonParserpost;
 import com.example.leticia.dss.widget.OptionsListView;
 import com.example.leticia.dss.widget.SeekBarListView;
 
@@ -44,18 +41,13 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 import java.util.Timer;
-import java.util.TimerTask;
 
 
-        public class PendingViewActivity extends AppCompatActivity implements OptionsClickListener {
+public class PendingViewActivity extends AppCompatActivity implements OptionsClickListener {
                 private String title, settingsURL, optionsURL, pointsURL, myratingURL,offerURL,opponentofferURL,agreementRdURL;
                 private String name, balance, test;
                 public TextView txtTitle, txtUsers, txtBalance, txtAgreement, txtlike, txtdislike, txtMsg;
@@ -81,7 +73,7 @@ import java.util.TimerTask;
                 public OptionsAdapter customAdapter;
                 private Timer autoUpdate;
                     /*
-                        public SingleLessonActivity1() {
+                       public SingleLessonActivity1() {
                             super(R.string.Details_name);
                         }*/
 
@@ -105,7 +97,7 @@ import java.util.TimerTask;
                     //databaseHelper = new PersonalDatabaseHelper(this);
                     Intent in = getIntent();
                     Bundle b = in.getExtras();
-
+                     //get Bundle Extras :
                     this.title = b.getString("title");
                     this.settingsURL = b.getString("settingsURL");
                     this.optionsURL = b.getString("optionsURL");
@@ -122,6 +114,7 @@ import java.util.TimerTask;
                     Log.d("Offer URL", "  " + offerURL);
                     Log.d("opponentOffer URL", "  " + opponentofferURL);
 
+                    //initializing button,textview,seebars,listview
                     listViewseekbar = (SeekBarListView) findViewById(R.id.seekbarlistview);
                     lstView = (OptionsListView) findViewById(R.id.optionListView);
                     txtTitle = (TextView) findViewById(R.id.txtTitle);
@@ -147,7 +140,6 @@ import java.util.TimerTask;
                     new AsyncTaskParseSettingsJson().execute();
                     new AsyncTaskParseOptionsJson().execute();
                     //new AsyncTaskParsePointsJson().execute();
-
 
                     txtTitle.setText(title);
                     pbpp.setVisibility(View.VISIBLE);
@@ -245,7 +237,7 @@ import java.util.TimerTask;
 
 
                         try {
-                            JsonParser2 jsonParser2 = new JsonParser2();
+                            JsonParserpost jsonParser2 = new JsonParserpost();
 
                             JSONObject json = jsonParser2.getJSONFromUrl(myratingURL, params);
                             status = json.get("status").toString();
@@ -697,7 +689,7 @@ import java.util.TimerTask;
                                 params.add(new BasicNameValuePair("option_id",offer));
                                 Log.d("params:", "" + params);
                                 try {
-                                    JsonParser2 jsonParser2 = new JsonParser2();
+                                    JsonParserpost jsonParser2 = new JsonParserpost();
 
                                     JSONObject json = jsonParser2.getJSONFromUrl(offerURL, params);
                                     status = json.get("status").toString();
@@ -750,7 +742,7 @@ import java.util.TimerTask;
                         params.add(new BasicNameValuePair("option_id",offer));
                         Log.d("params:", "" + params);
                         try {
-                            JsonParser2 jsonParser2 = new JsonParser2();
+                            JsonParserpost jsonParser2 = new JsonParserpost();
 
                             JSONObject json = jsonParser2.getJSONFromUrl(offerURL, params);
                             status = json.get("status").toString();

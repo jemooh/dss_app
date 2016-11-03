@@ -12,6 +12,8 @@ import com.example.leticia.dss.src.ResolvedFragment;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
     private Bundle negotiations;
+
+    //gettting Bundled negs_Json
     public TabsPagerAdapter(FragmentManager fm, Bundle negotiations) {
         super(fm);
         this.negotiations = negotiations;

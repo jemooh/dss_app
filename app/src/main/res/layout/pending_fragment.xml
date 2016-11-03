@@ -15,7 +15,6 @@
             android:layout_alignParentLeft="true"
             android:cacheColorHint="@android:color/transparent"
             android:fadingEdge="vertical" >
-
         </com.example.leticia.dss.widget.ItemsListView>
         <ProgressBar
             android:id="@+id/pbppl"

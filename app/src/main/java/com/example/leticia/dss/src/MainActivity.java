@@ -15,8 +15,7 @@ import android.widget.Toast;
 import com.example.leticia.dss.Adapters.TabsPagerAdapter;
 import com.example.leticia.dss.R;
 import com.example.leticia.dss.database.DatabaseHandler;
-import com.example.leticia.dss.utils.JsonParser2;
-import com.google.android.gms.appindexing.AppIndex;
+import com.example.leticia.dss.utils.JsonParserpost;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.apache.http.NameValuePair;
@@ -65,9 +64,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
                 viewPager = (ViewPager) findViewById(R.id.pager);
                 actionBar = getSupportActionBar();
+                //start Async Tack: To fetch negs
                 new AsyncTaskParseNegotiationsJson().execute(username,userPassword);
 
-
+                //setting Activity Title.
                 actionBar.setHomeButtonEnabled(false);
                 actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                 actionBar.setDisplayShowHomeEnabled(true);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             }
 
 
-
+                //Task to fetch Negotiations
                 public class AsyncTaskParseNegotiationsJson extends AsyncTask<String, String, String> {
 
                     final String TAG = "AsyncTaskParseJson.java";
@@ -113,7 +113,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                     JSONArray dataJsonArr = null;
 
                     @Override
-                    protected void onPreExecute() {}
+                    protected void onPreExecute() {
+
+
+                    }
 
                     @Override
                     protected String doInBackground(String... arg0) {
@@ -128,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                             params.add(new BasicNameValuePair("login", user));
                             params.add(new BasicNameValuePair("password", pass));
                             // instantiate our json parser
-                            JsonParser2 jParser = new JsonParser2();
+                            JsonParserpost jParser = new JsonParserpost();
                             Log.d("loginurl..",":"+loginurl);
                             // get json string from url
                             JSONObject json = jParser.getJSONFromUrl(loginurl,params);
@@ -215,6 +218,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                                         @Override
                                         public void onClick(DialogInterface dialog,
                                                             int which) {
+
                                             DatabaseHandler db = new DatabaseHandler(MainActivity.this);
                                             db.resetTables();
                                             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);

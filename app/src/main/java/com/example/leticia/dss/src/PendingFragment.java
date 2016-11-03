@@ -79,7 +79,7 @@ import com.example.leticia.dss.widget.ItemsListView;
                         JSONArray negotiationsArray = new JSONArray(negotiations);
 
                         for (int i = 0; i < negotiationsArray.length(); i++) {
-
+                            //get items from json neg array
                             final JSONObject negotiation = (JSONObject) negotiationsArray.get(i);
                             if (negotiation.get("active").equals("1")) {
                                 String opponent = negotiation.get("opponent").toString();
@@ -87,7 +87,10 @@ import com.example.leticia.dss.widget.ItemsListView;
                                 String negotiation_id = negotiation.get("id").toString();
                                 String title = negotiation.get("title").toString();
                                 String active = negotiation.get("active").toString();
+
+                                //added to the Negotiation List.
                                 items.add(new Negotiation(title, negotiation_id, negotiation_users_id, opponent, active));
+
                             }
 
                         }

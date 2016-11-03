@@ -43,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     private String passwd;
     private ProgressDialog progressDialog;
 
+   /* User login activity*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +61,12 @@ public class LoginActivity extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
 
+
+         //rest user tables../ logout any
         DatabaseHandler db = new DatabaseHandler(this);
         db.resetTableLogin();
+
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

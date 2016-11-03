@@ -17,7 +17,6 @@ import com.example.leticia.dss.Model.Options;
 import com.example.leticia.dss.R;
 import com.example.leticia.dss.database.DatabaseHandler;
 import com.example.leticia.dss.utils.JsonParser;
-import com.example.leticia.dss.utils.JsonParser2;
 import com.example.leticia.dss.widget.OptionsListView;
 
 import org.json.JSONArray;

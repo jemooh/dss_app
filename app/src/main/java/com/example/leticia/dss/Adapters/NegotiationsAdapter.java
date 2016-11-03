@@ -81,7 +81,7 @@ import com.example.leticia.dss.R;
 				} 
 				
 				ViewHolder holder = (ViewHolder) convertView.getTag();
-		        // Get a single video from our list
+		        // Get a single item from our list
 		        Negotiation Item = Items.get(position);
 
 		        holder.title.setText(Item.getTitle());

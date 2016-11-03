@@ -21,16 +21,18 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-public class JsonParser2 {
+public class JsonParserpost {
 
     static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
 
     // constructor
-    public JsonParser2() {
+    public JsonParserpost() {
 
     }
+
+
 
     public JSONObject getJSONFromUrl(String url, List<NameValuePair> params) {
 

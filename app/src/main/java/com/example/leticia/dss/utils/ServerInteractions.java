@@ -22,12 +22,6 @@ import com.example.leticia.dss.database.DatabaseHandler;
 
                     //private JSONParser jsonParser;
                 /*
-                    private static String loginURL = "https://www.ratibar.com/app/appRegLogin.php";
-                    private static String transURL = "http://dev.ratibar.com/app/appRegLogin.php?";
-                    private static String feedbackURL = "http://dev.ratibar.com/app/appRegLogin.php?";
-                    private static String login_tag = "login";
-                    private static String feedback_tag = "feedback";
-                    private static String trans_tag = "login";
                 */
 
                     // constructor
@@ -53,8 +47,6 @@ import com.example.leticia.dss.database.DatabaseHandler;
                     }*/
 
 
-
-
                     /**
                      * Function get Login status
                      * */
@@ -77,6 +69,7 @@ import com.example.leticia.dss.database.DatabaseHandler;
                         db.resetTables();
                         return true;
                     }
+
                     public static boolean isOnline(Context context) {
                         NetworkInfo netInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
                         if (netInfo != null && netInfo.isConnected())

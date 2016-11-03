@@ -23,7 +23,6 @@ import static com.example.leticia.dss.R.color.black;
 		 * This adapter is used to show our items objects in a ListView
 		 * It hasn't got many memory optimisations, if your list is getting bigger or more complex
 		 * you may want to look at better using your view resources: http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html
-		 * @author paul.blundell
 		 */
 		public class OptionsAdapter extends BaseAdapter {
 			public List<Options> Items;
